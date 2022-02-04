@@ -3,7 +3,6 @@ package Capgemini;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -49,8 +48,7 @@ class JuegoDelNumeroTest {
 			jdn.jugada(51);//si el número es 50 le asigno un valor límite para ver si es menor el resultado
 			assertAll("Jugada",
 				() -> assertEquals("Mi número es menor.", jdn.getResultado()),
-				() -> assertEquals(1, jdn.getJugada())
-				);			
+				() -> assertEquals(1, jdn.getJugada()));			
 		}
 		
 		@Test
@@ -58,8 +56,7 @@ class JuegoDelNumeroTest {
 			jdn.jugada(49);//si el número es 50 le asigno un valor límite para ver si es mayor el resultado
 			assertAll("Jugada",
 				() -> assertEquals("Mi número es mayor.", jdn.getResultado()),
-				() -> assertEquals(1, jdn.getJugada())
-				);			
+				() -> assertEquals(1, jdn.getJugada()));			
 		}
 		
 		@Test
@@ -67,8 +64,7 @@ class JuegoDelNumeroTest {
 			jdn.jugada(50);//si el número es 50 le asigno un valor igual al resultado
 			assertAll("Jugada",
 				() -> assertEquals("Bieeen!!! Acertaste.", jdn.getResultado()),
-				() -> assertEquals(1, jdn.getJugada())
-				);			
+				() -> assertEquals(1, jdn.getJugada()));			
 		}
 		
 		@Test
@@ -86,57 +82,22 @@ class JuegoDelNumeroTest {
 			assertAll("Jugada",
 					() -> assertEquals(true, jdn.getFinalizado()),
 					() -> assertEquals("Upsss! Se acabaron los intentos, el número era el 50", jdn.getResultado()),
-					() -> assertEquals(10, jdn.getJugada())
-					);			
+					() -> assertEquals(10, jdn.getJugada()));			
 		}
 		
-		@Test
+		// Es la exceptions pasamos un intento con el valor exacto para que entre en finalizado
+		// assertTrue para poner finalizar en true
+		// assertThrows con la clase exception para lanzer la exception y lanzamos otro intento pera
+		// que salte la exception
+		
+		@Test()
 		void test_es_exception() throws JuegoException {
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-			jdn.jugada(10);
-
-			Assertions.assertThrows(JuegoException.class,
-					()-> assertTrue(jdn.getFinalizado()));
+			jdn.jugada(50);
+			assertTrue(jdn.getFinalizado());
+			assertThrows(JuegoException.class,
+					() -> jdn.jugada(50)); // la línea 98 y 99 es un lamda que resume el try catch de la exception
 		}
 		
 	}
-	
-//	Assertions.assertThrows(JuegoException.class,
-//			()-> assertTrue(jdn.getFinalizado()));
-//}
-
-//	@Test
-//	void testJugadaString() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testJugadaInt() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetResultado() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetFinalizado() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetJugada() {
-//		fail("Not yet implemented");
-//	}
 
 }
