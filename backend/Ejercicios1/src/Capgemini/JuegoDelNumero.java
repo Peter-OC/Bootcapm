@@ -8,7 +8,7 @@ import java.util.Random;
  * @version 1.0
  */
 public class JuegoDelNumero implements Juego<String> {
-	private int numeroBuscado;
+	int numeroBuscado;
     private int intentos;
     private boolean encontrado;
     private String resultado;
@@ -33,7 +33,7 @@ public class JuegoDelNumero implements Juego<String> {
 		try {
 			jugada(Integer.parseInt(movimiento));
 		} catch (NumberFormatException e) {
-			throw new JuegoException("No es un nï¿½mero.", e);
+			throw new JuegoException("No es un número.", e);
 		}
 	}
 
@@ -46,11 +46,11 @@ public class JuegoDelNumero implements Juego<String> {
             encontrado = true;
             resultado = "Bieeen!!! Acertaste.";
         } else if (intentos >= 10) {
-        	resultado = "Upsss! Se acabaron los intentos, el nï¿½mero era el " + numeroBuscado;
+        	resultado = "Upsss! Se acabaron los intentos, el número era el " + numeroBuscado;
         } else if (numeroBuscado > numeroIntroducido) {
-        	resultado = "Mi nï¿½mero es mayor.";
+        	resultado = "Mi número es mayor.";
         } else {
-        	resultado = "Mi nï¿½mero es menor.";
+        	resultado = "Mi número es menor.";
         }
 	}
 
