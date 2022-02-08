@@ -25,7 +25,7 @@ public class Baraja {
 
 			for (int j = 0; j < Naipe.MAX_NAIPES_PALO; j++) {
 
-				if (j >= 14) {
+				if (j >= 13) {
 					naipes[((i * (Naipe.MAX_NAIPES_PALO )) + j)] = new Naipe(j + 1, palos[i]);
 				} else {
 					naipes[((i * (Naipe.MAX_NAIPES_PALO)) + j)] = new Naipe(j + 2, palos[i]);

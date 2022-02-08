@@ -36,7 +36,7 @@ public class Naipe {
 
 	@Override
 	public String toString() {
-		return "El " + valor + " de " + palo;
+		return valor + " de " + palo;
 	}
 	
 	
