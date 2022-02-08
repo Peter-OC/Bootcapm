@@ -1,5 +1,7 @@
 package Ajedrez;
 
+import java.util.Objects;
+
 public class Posicion {
 	
 	private int laFila;
@@ -26,14 +28,31 @@ public class Posicion {
 	public int getLaColumna() {
 		return laColumna;
 	}
-
-//	public void setLaColumna(int laColumna) {
-//		this.laColumna = laColumna;
-//	}
 	
-	public boolean equals(Posicion posicion) {
-		return super.equals(posicion);
+//	public void setLaColumna(int laColumna) {
+//	this.laColumna = laColumna;
+//}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(laColumna, laFila);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Posicion other = (Posicion) obj;
+		return laColumna == other.laColumna && laFila == other.laFila;
+	}
+
+
+	
+	
 	
 	
 
