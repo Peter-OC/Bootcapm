@@ -31,8 +31,7 @@ public class Posicion {
 //		this.laColumna = laColumna;
 //	}
 	
-	@Override
-	public boolean equals(Object posicion) {
+	public boolean equals(Posicion posicion) {
 		return super.equals(posicion);
 	}
 	
