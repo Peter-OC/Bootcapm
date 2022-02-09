@@ -5,7 +5,12 @@ public class Movimiento {
 	Posicion posInicial;
 	Posicion posFinal;
 	
-	public Movimiento(Posicion posInicial, Posicion posFinal) {
+	
+	public Movimiento(Posicion posInicial, Posicion posFinal) throws JuegoException{
+		
+		if (posInicial.equals(posFinal)) {
+			throw new JuegoException("La pieza no se ha movido");
+		}
 
 		this.posInicial = posInicial;
 		this.posFinal = posFinal;

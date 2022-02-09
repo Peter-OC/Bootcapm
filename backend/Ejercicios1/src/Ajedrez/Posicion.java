@@ -7,14 +7,24 @@ public class Posicion {
 	private int laFila;
 	private int laColumna;
 	
-	public Posicion(int laFila, int laColumna) {
-		this.laFila = laFila;
-		this.laColumna = laColumna;
+	public Posicion(int laFila, int laColumna) throws JuegoException {
+		
+		if(laFila <= 0 && laFila >= 9) {
+			throw new JuegoException("No es un movimiento valido");		
+			} else {
+				throw new JuegoException("No es un movimiento valido");	
+			}
+		
 	}
 	
-	public Posicion(char laFila, char laColumna) {
-		this.laFila = laFila;
-		this.laColumna = laColumna;
+	public Posicion(char laFila, char laColumna) throws JuegoException {
+		
+		if(laFila <= 'A' && laFila >= 'H') {
+			throw new JuegoException("No es un movimiento valido");		
+			} else {
+				throw new JuegoException("No es un movimiento valido");	
+			}
+		
 	}
 
 	public int getLaFila() {
