@@ -54,8 +54,8 @@ Fichero de salida comprimido
 Descompresor del fichero de salida: zip -> txt
 Compresor del fichero de entrada: txt -> zip
 Procesar entrada/salida comprimida
-##Ejercicios de refuerzo
-###Iniciación
+## *Ejercicios de refuerzo
+### Iniciación*
 http://puntocomnoesunlenguaje.blogspot.com/p/ejercicios.html
 https://tutobasico.com/basicos-java/
 https://tutobasico.com/basicos2-java/
