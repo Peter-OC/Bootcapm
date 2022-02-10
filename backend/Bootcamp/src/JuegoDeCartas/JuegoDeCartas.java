@@ -1,6 +1,6 @@
 package JuegoDeCartas;
 
-public class JuegoDeCartas {
+public class JuegoDeCartas { 
 
 	public static void main(String[] args) {
 		
