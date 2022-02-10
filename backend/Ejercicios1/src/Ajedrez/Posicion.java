@@ -12,7 +12,7 @@ public class Posicion {
 		if(laFila <= 0 && laFila >= 9) {
 			throw new JuegoException("No es un movimiento valido");		
 			} else {
-				throw new JuegoException("No es un movimiento valido");	
+				throw new JuegoException("No es un movimiento valido");
 			}
 		
 	}

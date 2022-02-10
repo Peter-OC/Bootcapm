@@ -8,6 +8,9 @@ public class Movimiento {
 	
 	public Movimiento(Posicion posInicial, Posicion posFinal) throws JuegoException{
 		
+		if(posInicial==null) {
+			throw new JuegoException("La pieza no se ha encontrado");
+		}
 		if (posInicial.equals(posFinal)) {
 			throw new JuegoException("La pieza no se ha movido");
 		}
@@ -20,41 +23,43 @@ public class Movimiento {
 		return posInicial;
 	}
 
-	public void setPosInicial(Posicion posInicial) {
-		this.posInicial = posInicial;
-	}
+//	public void setPosInicial(Posicion posInicial) {
+//		this.posInicial = posInicial;
+//	}
 
 	public Posicion getPosFinal() {
 		return posFinal;
 	}
 
-	public void setPosFinal(Posicion posFinal) {
-		this.posFinal = posFinal;
+//	public void setPosFinal(Posicion posFinal) {
+//		this.posFinal = posFinal;
+//	}
+//	
+	public boolean EsVertical() {
+		
+		return posInicial.getLaColumna() == posFinal.getLaColumna();	
 	}
 	
-	public static boolean EsVertical() {
-		return false;
+	public boolean EsHorizontal() {
 		
+		return posInicial.getLaFila() == posFinal.getLaFila();		
 	}
 	
-	public static boolean EsHorizontal() {
-		return false;
+	public boolean EsDiagonal() {
 		
+		return SaltoVertical(0) == SaltoHorizontal(0); 
+
+//		return posInicial.getLaColumna() != posFinal.getLaColumna() && posInicial.getLaFila() != posFinal.getLaFila();			
 	}
 	
-	public static boolean EsDiagonal() {
-		return false;
+	public int SaltoVertical(int salto) {
 		
+		return (salto < posInicial.getLaFila()) ? -salto : salto;		
 	}
 	
-	public static int SaltoVertical() {
-		return (Integer) null;
+	public int SaltoHorizontal(int salto) {
 		
-	}
-	
-	public static int SaltoHorizontal() {
-		return (Integer) null;
-		
+		return (salto < posInicial.getLaColumna()) ? -salto : salto;		
 	}
 	
 	public static int DeltaFila() {
