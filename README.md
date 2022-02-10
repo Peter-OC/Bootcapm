@@ -52,7 +52,7 @@ FileOUT(Archivo de salida): Salida.txt
      - Fichero de salida comprimido
      - Descompresor del fichero de salida: zip -> txt
      - Compresor del fichero de entrada: txt -> zip
-   - Procesar entrada/salida comprimida
+     - Procesar entrada/salida comprimida
 ## Ejercicios de refuerzo
 ### Iniciación
 - http://puntocomnoesunlenguaje.blogspot.com/p/ejercicios.html
