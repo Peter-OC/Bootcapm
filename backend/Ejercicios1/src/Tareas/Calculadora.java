@@ -1,39 +1,138 @@
 package Tareas;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.List;
+
+
 public class Calculadora {
+    /**
+     * Lista de las operaciones soportadas
+     */
+    public static final String OPERACIONES_SOPORTADAS = "+-*/=%";
+    
+    private BigDecimal acumulado;
+    private char operadorPendiente;
 
-	public static void main(String[] args) {
+    /**
+     * Constructor por defecto
+     */
+    public Calculadora() {
+        inicializa();
+    }
 
-		String cadena = "3+4+3,4-7*1=";
-		String componentes[] = cadena.split("(?<=[-+*=])");
-		int num1, num2, operador;
-	//	System.out.println("hola mundo");
+    /**
+     * Restaura el valor inicial para calcular la siguiente secuencia
+     */
+    public void inicializa() {
+        acumulado = new BigDecimal(0);
+        operadorPendiente = '+';
+    }
 
-		for (int i = 0; i < componentes.length; i++) {
-			
-			for(int j = 0; j>componentes[i].length(); j++) {
-				
-			} 
-		System.out.println(componentes[i]);
-		} 
-	}
-	
-	public void calcular() {
-		int i;
-		String cadena = "3+4+3,4-7*1=";
-		char[] subCadenas = cadena.toCharArray();
-		String num = "";
+    /**
+     * Obtiene el total acumulado hasta el momento.
+     * @return Valor acumulado
+     */
+    public double getAcumulado() {
+        return acumulado.setScale(16, RoundingMode.HALF_EVEN).doubleValue();
+    }
+
+    /**
+     * Comprueba que sea una de las operaciones soportadas por la calculadora.
+     * @param operacion S�mbolo de la operaci�n
+     * @return true si la soporta, false en el resto de los casos.
+     */
+    public boolean isOperacion(char operacion) {
+        return OPERACIONES_SOPORTADAS.indexOf(operacion) != -1;
+    }
+    /**
+     * Realiza la operaci�n pendiente una vez obtenido el segundo operador y 
+     * guarda la nueva operaci�n pendiente
+     * @param operando2 segundo operador
+     * @param nuevoOperador la nueva operaci�n pendiente
+     * @return el total acumulado hasta el momento
+     * @throws Exception Cuando el s�mbolo de operaci�n no esta soportado
+     */
+    public double calcula(double operando2, char nuevoOperador) throws CalculadoraException{
+        if (!isOperacion(nuevoOperador)) {
+            throw new CalculadoraException("Operaci�n no soportada.");
+        }
+        var operando = new BigDecimal(operando2);
+        switch (operadorPendiente) {
+            case '+':
+            	acumulado = acumulado.add(new BigDecimal(operando2));
+                break;
+            case '-':
+            	acumulado = acumulado.subtract(new BigDecimal(operando2));
+                break;
+            case '*':
+            	acumulado = acumulado.multiply(new BigDecimal(operando2));
+                break;
+            case '/':
+            	acumulado = acumulado.divide(new BigDecimal(operando2), MathContext.DECIMAL64);
+                break;
+            case '%':
+            	acumulado = acumulado.remainder(new BigDecimal(operando2));
+                break;
+            case '=':
+                break;
+            default:
+                throw new CalculadoraException("Operaci�n no soportada.");
+        }
+        this.operadorPendiente = nuevoOperador;
+        return getAcumulado();
+    }
+
+    /**
+     * Sobrecarga
+     * @see Calculadora#calcula(double, char) 
+     * @param operando2 segundo operador
+     * @param nuevaOperacion la nueva operaci�n pendiente
+     * @return el total acumulado hasta el momento
+     * @throws Exception Cuando el s�mbolo de operaci�n no esta soportado
+     */
+    public double calcula(String operando2, char nuevoOperador) throws CalculadoraException {
+        if (operando2.endsWith(",") || operando2.endsWith(".")) {
+            operando2 += "0";
+        }
+        try {
+            return calcula(
+                    Double.parseDouble(operando2.replace(',', '.')),
+                    nuevoOperador);
+        } catch (NumberFormatException ex) {
+            throw new CalculadoraException(
+                    "El operando no tienen un formato n�merico valido.", 
+                    ex);
+        }
+    }
+    
+	public static class Operacion {
+		private double operando;
+		private char operador;
 		
-		System.out.println("3+4+3,4-7*1=");
-		
-		for(i = 0; i<subCadenas.length; i++) {
-			if(Character.isDigit(subCadenas[i]))
-				num += subCadenas[i];
-			else {
-				System.out.println(num + " " + subCadenas[i]);
-				num ="";
-			}
+		public Operacion(double operando, char operador) {
+			super();
+			this.operando = operando;
+			this.operador = operador;
+		}
+		public Operacion(String operando, char operador) {
+			this(Double.parseDouble(operando.replace(',', '.')), operador);
+		}
+		public double getOperando() {
+			return operando;
+		}
+		public char getOperador() {
+			return operador;
 		}
 	}
-
+	
+	public double calcula(List<Operacion> operaciones) throws CalculadoraException {
+		inicializa();
+		for (Operacion operacion : operaciones) {
+			calcula(operacion.getOperando(), operacion.getOperador());			
+		}
+		return getAcumulado();
+	}
+	
 }

@@ -1,6 +1,5 @@
 package Tareas;
 
-
 public class CalculadoraException extends Exception {
 
 	public CalculadoraException() {
