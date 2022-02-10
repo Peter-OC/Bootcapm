@@ -47,12 +47,12 @@ FileOUT: Salida.txt
   ----------  
   3,400000
   ```
-- **Ampliaciones (ficheros):**
-  - Fichero de entrada con múltiples líneas.
-  - Fichero de salida comprimido
-  - Descompresor del fichero de salida: zip -> txt
-  - Compresor del fichero de entrada: txt -> zip
-  - Procesar entrada/salida comprimida
+  - **Ampliaciones (ficheros):**
+    - Fichero de entrada con múltiples líneas.
+    - Fichero de salida comprimido
+    - Descompresor del fichero de salida: zip -> txt
+    - Compresor del fichero de entrada: txt -> zip
+    - Procesar entrada/salida comprimida
 ## Ejercicios de refuerzo
 ### Iniciación
 - http://puntocomnoesunlenguaje.blogspot.com/p/ejercicios.html
