@@ -2,7 +2,7 @@ package JuegoDeCartas;
 
 public class Naipe {
 	
-	private int valor;
+	private int valor; 
 	private String palo;
 	
 	public static final String[] PALOS = {"CORAZONES", "DIAMANTES", "PICAS", "TREBOLES"};
