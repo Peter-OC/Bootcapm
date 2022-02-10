@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BarajaFrancesa56 {
+public class BarajaFrancesa56 { 
 	
 	List<Naipe> naipes = new ArrayList<Naipe> ();
 	 
