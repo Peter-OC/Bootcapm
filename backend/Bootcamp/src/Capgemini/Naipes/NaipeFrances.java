@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import Capgemini.JuegoDelNumero.JuegoException;
-
+ 
 public class NaipeFrances extends Naipe<NaipeFrances.Palos> {
 	public static enum Palos { CORAZONES, DIAMANTES, TREBOLES, PICAS }
 	public static final int CARTASxPALO = ValorNaipe.values().length - 1;

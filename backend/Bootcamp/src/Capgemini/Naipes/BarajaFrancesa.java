@@ -1,7 +1,7 @@
 package Capgemini.Naipes;
 
 import Capgemini.JuegoDelNumero.JuegoException;
-
+ 
 public class BarajaFrancesa extends Baraja<NaipeFrances> {
 	public BarajaFrancesa() {
 		super(generaCartas());

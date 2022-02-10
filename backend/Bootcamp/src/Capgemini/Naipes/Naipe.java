@@ -1,7 +1,7 @@
 package Capgemini.Naipes;
 
 import Capgemini.JuegoDelNumero.JuegoException;
-
+ 
 /* Version 1.0
 public class Naipe {
 	public static enum Palos { OROS, COPAS, ESPADAS, BASTOS }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import Ajedrez.JuegoException;
 import Capgemini.JuegoDelNumero.JuegoDelNumero;
-
+  
 public class MainJuegoNaipes {
 
 	public static void main(String[] args) throws Capgemini.JuegoDelNumero.JuegoException, JuegoException {
