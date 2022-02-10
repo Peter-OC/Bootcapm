@@ -1,5 +1,5 @@
 package Ajedrez;
 
-public class Juego {
+public class Juego { 
 
 }

@@ -1,6 +1,6 @@
 package Ajedrez;
 
-public class JuegoException extends Exception{
+public class JuegoException extends Exception{  
 
 	public JuegoException() {
 		super();

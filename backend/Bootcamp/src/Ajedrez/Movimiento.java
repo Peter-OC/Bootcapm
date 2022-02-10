@@ -1,6 +1,6 @@
 package Ajedrez;
 
-public class Movimiento {
+public class Movimiento { 
 	
 	Posicion posInicial;
 	Posicion posFinal;

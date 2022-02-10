@@ -1,6 +1,6 @@
 package Ajedrez;
 
-public class Pieza {
+public class Pieza { 
 	
 	private Color color;
 

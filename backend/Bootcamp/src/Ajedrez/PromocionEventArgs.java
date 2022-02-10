@@ -1,6 +1,6 @@
 package Ajedrez;
 
-public class PromocionEventArgs {
+public class PromocionEventArgs { 
 	
 	private Pieza p;
 

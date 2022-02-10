@@ -1,6 +1,6 @@
 package Ajedrez;
 
-public enum Color {
+public enum Color {   
 	BLANCAS("blancas"), NEGRAS("negras");
 	
 	private final String COLOR;
