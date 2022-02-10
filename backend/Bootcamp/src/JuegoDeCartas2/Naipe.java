@@ -1,6 +1,6 @@
 package JuegoDeCartas2;
 
-public class Naipe {
+public class Naipe { 
 
 	public static enum Palos {
 		CORAZONES, DIAMANTES, TREBOLES, PICAS
