@@ -2,7 +2,7 @@ package Tareas;
 
 import java.util.Random;
 
-public class Juego {
+public class Juego { 
 
 	private int cont = 10;
 	private Random rnd = new Random();

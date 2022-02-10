@@ -3,7 +3,7 @@ package Tareas;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
-public class AdivinaNumero2 {
+public class AdivinaNumero2 { 
 
 	public static void main(String[] args) {
 
