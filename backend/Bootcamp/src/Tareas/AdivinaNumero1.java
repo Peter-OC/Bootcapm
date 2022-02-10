@@ -2,7 +2,7 @@ package Tareas;
 
 import java.util.Scanner;
 
-public class AdivinaNumero1 {
+public class AdivinaNumero1 { 
 
 	public static void main(String[] args) {
 
