@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import Capgemini.PersonaAlumno.Alumno;
+
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class Calculadora2Test {
 	Calculadora2 calc;
