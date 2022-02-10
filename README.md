@@ -8,7 +8,7 @@ ya te diré si es mayor o menor que el mío, pero tienes 10 intentos como mucho.
   num = Integer.parseInt(cad);
   var rnd = new Random(); num = rnd.nextInt(10);  
 ```
-2 - Opcional: Decodificar las cadenas con el siguiente formato:
+2 - ***Opcional:*** Decodificar las cadenas con el siguiente formato:
 ```
   3+4+3,4-7*1=
 ```
@@ -27,8 +27,8 @@ sin interfaz de usuario. Debe contar con los métodos inicializar y jugada, así
 informar del número de intentos y el resultado de la última jugada. No debe dejar 
 continuar si el juego ha terminado. Para probar el juego se debe implementar el interfaz de usuario.
 
-4 - *Opcional: Crear la clase Calculadora que acumule y permita obtener los resultados 
-parciales de las operaciones obtenidas en la decodificación anterior.*
+4 - ***Opcional:*** Crear la clase Calculadora que acumule y permita obtener los resultados 
+parciales de las operaciones obtenidas en la decodificación anterior.
 
 5 - Crear las clases para implementar juegos que utilizan una baraja de naipes. Los naipes tienen dos propiedades distintivas: valor y palo. Probar la funcionalidad de barajar, repartir, comparar, … (Utilizar Enumeraciones, genéricos, colecciones …)
 
