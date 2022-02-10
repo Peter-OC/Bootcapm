@@ -1,7 +1,7 @@
 # BootCamp 5
 ## Back End
 ### Ejercicios de Iniciación a la Programación Java
-- 1 - Juego de “Adivina el número que estoy pensando”, un número del 0 al 100, 
+- :one: Juego de “Adivina el número que estoy pensando”, un número del 0 al 100, 
 ya te diré si es mayor o menor que el mío, pero tienes 10 intentos como mucho.
 ```
   Scanner teclado = new Scanner(System.in); cad = teclado.nextLine();  
