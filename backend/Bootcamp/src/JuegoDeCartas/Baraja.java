@@ -1,6 +1,6 @@
 package JuegoDeCartas;
 
-public class Baraja {
+public class Baraja { 
 
 	private Naipe naipes[];
 	private int posNuevoNaipe;
