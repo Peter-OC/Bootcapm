@@ -55,14 +55,14 @@ FileOUT: Salida.txt
 - Procesar entrada/salida comprimida
 ## Ejercicios de refuerzo
 ### Iniciación
-http://puntocomnoesunlenguaje.blogspot.com/p/ejercicios.html
-https://tutobasico.com/basicos-java/
-https://tutobasico.com/basicos2-java/
-https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-basicos-java/
-https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-metodos-y-funciones-de-java/
+- http://puntocomnoesunlenguaje.blogspot.com/p/ejercicios.html
+- https://tutobasico.com/basicos-java/
+- https://tutobasico.com/basicos2-java/
+- https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-basicos-java/
+- https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-metodos-y-funciones-de-java/
 ### Intermedio:
-https://tutobasico.com/basicos3-java/
-http://ejerciciosresueltosprogramacion.blogspot.com/
-https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-programacion-orientado-a-objetos-java/
+- https://tutobasico.com/basicos3-java/
+- http://ejerciciosresueltosprogramacion.blogspot.com/
+- https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-programacion-orientado-a-objetos-java/
 # Front End
 # Proyecto
