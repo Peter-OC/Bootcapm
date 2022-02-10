@@ -1,4 +1,4 @@
-package Capgemini.JuegoDelNumero;
+package Capgemini.JuegoDelNumero; 
 
 public interface Juego<T> {
 	/**

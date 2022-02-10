@@ -84,7 +84,7 @@ class JuegoDelNumeroTest {
 					() -> assertEquals("Upsss! Se acabaron los intentos, el número era el 50", jdn.getResultado()),
 					() -> assertEquals(10, jdn.getJugada()));			
 		}
-		
+		 
 		// Es la exceptions pasamos un intento con el valor exacto para que entre en finalizado
 		// assertTrue para poner finalizar en true
 		// assertThrows con la clase exception para lanzer la exception y lanzamos otro intento pera

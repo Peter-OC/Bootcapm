@@ -1,5 +1,5 @@
 package Capgemini.JuegoDelNumero;
-
+ 
 @SuppressWarnings("serial")
 public class JuegoException extends Exception {
 
