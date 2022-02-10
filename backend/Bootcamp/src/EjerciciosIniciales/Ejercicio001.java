@@ -19,7 +19,7 @@
 
 package EjerciciosIniciales;
 
-public class Ejercicio1 {
+public class Ejercicio001 {
 
 	public static void main(String[] args) {
 		
