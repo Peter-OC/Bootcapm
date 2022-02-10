@@ -4,7 +4,7 @@ package EjerciciosIniciales;
 
 import java.util.Scanner;
 
-public class Ejercicio13 {
+public class Ejercicio013 {
 
 	public static void main(String[] args) {
 		

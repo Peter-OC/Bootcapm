@@ -2,7 +2,7 @@ package EjerciciosIniciales;
 
 import java.util.Scanner;
 
-public class Ejercicio10 {
+public class Ejercicio010 {
 
 	public static void main(String[] args) {
 

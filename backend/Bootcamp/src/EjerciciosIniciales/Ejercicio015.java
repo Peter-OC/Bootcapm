@@ -8,7 +8,7 @@ package EjerciciosIniciales;
 
 import java.util.Scanner;
 
-public class Ejercicio15 {
+public class Ejercicio015 {
 
 	public static void main(String[] args) {
 		// p
