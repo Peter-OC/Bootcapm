@@ -61,9 +61,9 @@ https://tutobasico.com/basicos-java/
 https://tutobasico.com/basicos2-java/
 https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-basicos-java/
 https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-metodos-y-funciones-de-java/
-###Intermedio:###
+### Intermedio:
 https://tutobasico.com/basicos3-java/
 http://ejerciciosresueltosprogramacion.blogspot.com/
 https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-programacion-orientado-a-objetos-java/
-Front End
-Proyecto
+# Front End
+# Proyecto
