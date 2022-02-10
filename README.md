@@ -7,8 +7,9 @@ Juego de “Adivina el número que estoy pensando”, un número del 0 al 100, y
   num = Integer.parseInt(cad);
   var rnd = new Random(); num = rnd.nextInt(10);  
 Opcional: Decodificar las cadenas con el siguiente formato:
-
+```
   3+4+3,4-7*1=
+```
 en los siguientes componentes:
 
   3 +  
