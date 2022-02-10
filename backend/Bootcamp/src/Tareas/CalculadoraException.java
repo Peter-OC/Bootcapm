@@ -2,7 +2,7 @@ package Tareas;
 
 public class CalculadoraException extends Exception {
 
-	public CalculadoraException() {
+	public CalculadoraException() { 
 	}
 
 	public CalculadoraException(String message) {

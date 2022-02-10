@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 
-public class Calculadora {
+public class Calculadora { 
     /**
      * Lista de las operaciones soportadas
      */

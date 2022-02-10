@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MainCalculadora {
+public class MainCalculadora { 
 
 	public static void main(String[] args) {
 
