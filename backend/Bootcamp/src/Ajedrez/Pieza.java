@@ -4,6 +4,11 @@ public class Pieza {
 	
 	private Color color;
 
+	public Pieza(Color color) {
+		super();
+		this.color = color;
+	}
+
 	public Color getColor() {
 		return color;
 	}

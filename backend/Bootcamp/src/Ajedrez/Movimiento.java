@@ -34,31 +34,41 @@ public class Movimiento {
 //		this.posFinal = posFinal;
 //	}
 //	
-	public boolean EsVertical() {
+	public boolean esVertical() {
 
 		return posInicial.getLaColumna() == posFinal.getLaColumna();
 	}
 
-	public boolean EsHorizontal() {
+	public boolean esHorizontal() {
 
 		return posInicial.getLaFila() == posFinal.getLaFila();
 	}
 
-	public boolean EsDiagonal() {
+	public boolean esDiagonal() {
 
-		return SaltoVertical(0) == SaltoHorizontal(0);
-
+		return saltoVertical() == saltoHorizontal();
 //		return posInicial.getLaColumna() != posFinal.getLaColumna() && posInicial.getLaFila() != posFinal.getLaFila();			
 	}
+/* ESTE CODIGO FUNCIONA, PERO JAVIER DICE QUE COMPLICA EL RESTO DE CLASES Y DE METODOS 
+ * ASÍ QUE USARE EL METODO PARA EL NUMERO ABSOLUTO Math.abs*/
+//	public int saltoVertical(int salto) {
+//
+//		return (salto < posInicial.getLaFila()) ? -salto : salto;
+//	}
+//
+//	public int saltoHorizontal(int salto) {
+//
+//		return (salto < posInicial.getLaColumna()) ? -salto : salto;
+//	}  
+	
+	public int saltoVertical() {
 
-	public int SaltoVertical(int salto) {
-
-		return (salto < posInicial.getLaFila()) ? -salto : salto;
+		return Math.abs(posFinal.getLaFila() - posInicial.getLaFila());
 	}
 
-	public int SaltoHorizontal(int salto) {
+	public int saltoHorizontal() {
 
-		return (salto < posInicial.getLaColumna()) ? -salto : salto;
+		return Math.abs(posFinal.getLaColumna() - posInicial.getLaColumna());
 	}  
 
 	public int deltaFila() {
