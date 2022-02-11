@@ -59,7 +59,7 @@ public class Movimiento {
 	public int SaltoHorizontal(int salto) {
 
 		return (salto < posInicial.getLaColumna()) ? -salto : salto;
-	}
+	}  
 
 	public int deltaFila() {
 		if (posFinal.getLaColumna() > posInicial.getLaColumna()) { 
