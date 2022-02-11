@@ -62,26 +62,28 @@ public class Movimiento {
 	}  
 
 	public int deltaFila() {
+		int mover = 0;
 		if (posFinal.getLaColumna() > posInicial.getLaColumna()) { 
-			return 1;
+			mover = 1;
 		} else if (posFinal.getLaColumna() == posInicial.getLaColumna()) { 
-			return 0;
+			mover = 0;
 		} else if (posFinal.getLaColumna() < posInicial.getLaColumna()) { 
-			return -1;
+			mover = -1;
 		}
-		return 0;	 	
+		return mover;	 	
 		
 	}
 
 	public int deltaColumna() {
+		int mover = 0;
 		if (posFinal.getLaFila() > posInicial.getLaFila()) {
-			return 1;
+			mover = 1;
 		} else if (posFinal.getLaFila() == posInicial.getLaFila()) {
-			return 0;
+			mover = 0;
 		} else if (posFinal.getLaFila() < posInicial.getLaFila()) {
-			return -1;
+			mover = -1;
 		}
-		return 0;
+		return mover;
 		
 	}
 
