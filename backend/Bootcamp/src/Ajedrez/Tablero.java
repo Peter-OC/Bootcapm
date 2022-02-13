@@ -2,7 +2,32 @@ package Ajedrez;
 
 public class Tablero implements Cloneable {
 
-	Pieza[][] piezas = new Pieza[8][8]; // casillas del tablero
+	Pieza[][] piezas = new Pieza[8][8];
+	
+	public Tablero() {
+		
+		piezas[0][0] = new Torre(Color.BLANCAS);
+		piezas[2][0] = new Alfil(Color.BLANCAS);
+		piezas[3][0] = new Reina(Color.BLANCAS);
+		piezas[4][0] = new Rey(Color.BLANCAS);
+		piezas[5][0] = new Alfil(Color.BLANCAS);
+		piezas[6][0] = new Caballo(Color.BLANCAS);
+		piezas[7][0] = new Torre(Color.BLANCAS);
+		
+		piezas[0][7] = new Torre(Color.NEGRAS);
+		piezas[1][7] = new Caballo(Color.NEGRAS);
+		piezas[2][7] = new Alfil(Color.NEGRAS);
+		piezas[3][7] = new Reina(Color.NEGRAS);
+		piezas[4][7] = new Rey(Color.NEGRAS);
+		piezas[5][7] = new Alfil(Color.NEGRAS);
+		piezas[6][7] = new Caballo(Color.NEGRAS);
+		piezas[7][7] = new Torre(Color.NEGRAS);
+		
+		for(int i = 0; i < 8 ; i++) {
+			piezas[i][1] = new Peon(Color.BLANCAS);
+			piezas[i][6] = new Peon(Color.NEGRAS);
+		}	
+	}
 
 
 	public Pieza[][] getPieza(Posicion posicion, Pieza pieza) {
@@ -21,7 +46,7 @@ public class Tablero implements Cloneable {
 		this.piezas = piezas;
 	}
 
-	private boolean esValido(int i) { // comprobar si la i est� entre el 1 y el 8
+	private boolean esValido(int i) {
 		return (i >= 1 && i <= 8);
 	}
 
@@ -42,26 +67,6 @@ public class Tablero implements Cloneable {
 	}
 
 	public void mover(Movimiento movimiento) throws JuegoException {
-
-		Color colorPiezaInicio = piezas[movimiento.getPosInicial().getLaColumna()][movimiento.getPosInicial()
-				.getLaFila()].getColor();
-		Color colorPiezaDestino = piezas[movimiento.getPosFinal().getLaColumna()][movimiento.getPosFinal().getLaFila()]
-				.getColor();
-		Posicion posicionInicio = movimiento.getPosInicial();
-		Posicion posicionFinal = movimiento.getPosFinal();
-
-		if (hayPieza(posicionInicio)) {
-			if (hayPieza(posicionFinal) && colorPiezaInicio != colorPiezaDestino) {
-				QuitaPieza(posicionFinal); // Quitamos la pieza que hemos comido
-			} else {
-				throw new JuegoException("No puedes comer una pieza del mismo color");
-			}
-			piezas[posicionFinal.getLaColumna()][posicionFinal
-					.getLaFila()] = piezas[posicionInicio.getLaColumna()][posicionInicio.getLaFila()];
-			QuitaPieza(posicionInicio); // Quitamos la pieza del color que mueve de la posici�n inicial
-		} else {
-			throw new JuegoException("No hay en la posici�n inicial");
-		}
 
 	}
 
