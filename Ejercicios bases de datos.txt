@@ -1,11 +1,26 @@
+--1
 SELECT *
 FROM actor
 WHERE first_name = 'NICK'
---
+--2
 SELECT district
 FROM address
---
+--3
 SELECT *
 FROM film
 WHERE description LIKE '%Secret Agent%'
---
+--4
+SELECT *
+FROM film
+WHERE rental_duration 
+ORDER BY rental_duration DESC
+--5
+
+--6
+SELECT first_name, COUNT(first_name) AS total
+FROM actor
+GROUP BY first_name
+ORDER BY 2 DESC LIMIT 5
+--7
+
+
