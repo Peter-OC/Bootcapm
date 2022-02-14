@@ -23,4 +23,10 @@ GROUP BY first_name
 ORDER BY 2 DESC LIMIT 5
 --7
 
+--8
+
+--9
+
+--10
+
 
