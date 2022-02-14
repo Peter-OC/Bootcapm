@@ -1,0 +1,11 @@
+SELECT *
+FROM actor
+WHERE first_name = 'NICK'
+--
+SELECT district
+FROM address
+--
+SELECT *
+FROM film
+WHERE description LIKE '%Secret Agent%'
+--
