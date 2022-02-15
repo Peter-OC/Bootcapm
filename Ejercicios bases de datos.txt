@@ -24,7 +24,17 @@ FROM actor
 GROUP BY first_name
 ORDER BY 2 DESC LIMIT 5
 --7
-
+SELECT cu.first_name, cu.last_name, cu.email, ad.address, ad.postal_code, ci.city, co.country
+FROM customer AS cu
+	INNER JOIN (address AS ad
+		INNER JOIN city AS ci
+		INNER JOIN country AS co
+		ON ci.country_id = co.country_id
+		ON ad.city_id = ci.city_id
+		)
+	ON cu.address_id = ci.city_id
+	
+WHERE co.country LIKE 'china' OR co.country LIKE 'Taiwan'
 --8
 SELECT ci.city, co.country, s.store_id, s.first_name, s.last_name, 
 	COUNT(inv.film_id), 
