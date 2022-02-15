@@ -1,5 +1,6 @@
 package Ajedrez;
 
+
 public class Movimiento {
 
 	private Posicion posInicial;

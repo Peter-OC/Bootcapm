@@ -22,7 +22,10 @@ public class Pieza {
 		
 	}
 	
-	public void Mover(Movimiento movimiento, Tablero tablero) {
+	public void Mover(Movimiento movimiento, Tablero tablero) throws JuegoException {
+		if (esValido(movimiento, tablero)) {
+			tablero.mover(movimiento);
+		}
 		
 	}
 

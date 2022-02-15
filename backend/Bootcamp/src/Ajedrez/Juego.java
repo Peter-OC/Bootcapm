@@ -2,6 +2,12 @@ package Ajedrez;
 
 public class Juego { 
 	
+	public static void main(String[] args) {
+		
+		Inicializar();
+		
+	}
+	
 	private Tablero elTablero;
 	private Color elTurno;
 	private boolean partidaActiva =false;
@@ -19,7 +25,7 @@ public class Juego {
 		this.elTurno = elTurno;
 	}
 	
-	public void Inicializar() {
+	public static void Inicializar() {
 		
 	}
 	
@@ -35,5 +41,7 @@ public class Juego {
 	public void CambiarTurno() {
 		
 	}
+	
+	
 
 }

@@ -1,6 +1,7 @@
 package Ajedrez;
 
-import java.util.Objects; 
+import java.util.Objects;
+
 
 
 /**

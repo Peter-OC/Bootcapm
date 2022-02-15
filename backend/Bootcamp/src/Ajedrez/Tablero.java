@@ -1,5 +1,6 @@
 package Ajedrez;
 
+
 public class Tablero implements Cloneable {
 
 	Pieza[][] piezas = new Pieza[8][8];
@@ -30,8 +31,8 @@ public class Tablero implements Cloneable {
 	}
 
 
-	public Pieza[][] getPieza(Posicion posicion, Pieza pieza) {
-		return piezas;
+	public Pieza getPieza(Posicion posicion, Pieza pieza) {
+		return getPieza(posicion, pieza);
 	}
 
 	public void setPieza(Posicion posicion, Pieza pieza) {
@@ -78,8 +79,18 @@ public class Tablero implements Cloneable {
 		return null;
 	}
 
-	public boolean hayPiezasEntre(Movimiento movimiento) {
-		return true;
+	public boolean hayPiezasEntre(Movimiento movimiento) throws JuegoException {
+		if(!movimiento.esVertical() && !movimiento.esHorizontal() && !movimiento.esDiagonal())
+			throw new IllegalArgumentException("Movimiento no valido");
+		Posicion siguientePosicion = new Posicion(movimiento.getPosInicial().getLaFila()+movimiento.deltaFila(),
+				movimiento.getPosInicial().getLaColumna()+movimiento.deltaColumna());
+		while (!siguientePosicion.equals(movimiento.getPosFinal())) {
+			if(hayPieza(siguientePosicion))
+				return true;
+			new Posicion(siguientePosicion.getLaFila()+movimiento.deltaFila(),
+					siguientePosicion.getLaColumna()+movimiento.deltaColumna());
+		}
+		return false;
 	}
 
 }
