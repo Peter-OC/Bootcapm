@@ -51,5 +51,24 @@ GROUP BY s.staff_id
 --9
 
 --10
+SELECT co.country, COUNT(re.rental_id) AS rental_count
+FROM rental re
+	INNER JOIN customer cu 
+		ON (re.customer_id = cu.customer_id)
+	INNER JOIN address a 
+		ON (cu.address_id = a.address_id )
+	INNER JOIN city ci
+		ON (a.city_id = ci.city_id)
+	INNER JOIN country co
+		ON (ci.country_id = co.country_id)
+	INNER JOIN inventory i
+		ON (re.inventory_id = i.inventory_id)
+	INNER JOIN film_actor fa
+		ON (i.film_id = fa.film_id)
+	INNER JOIN actor ac
+		ON (fa.actor_id = ac.actor_id)
+WHERE ac.first_name = 'GINA' AND ac.last_name = 'DEGENERES'
+GROUP BY co.country
+ORDER BY rental_count 
 
 
