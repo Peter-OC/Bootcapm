@@ -4,11 +4,6 @@ package Ajedrez;
 public class Tablero implements Cloneable {
 
 	Pieza[][] piezas = new Pieza[8][8];
-	
-	public Tablero() {
-		
-		
-	}
 
 
 	public Pieza getEscaque(Posicion posicion) {

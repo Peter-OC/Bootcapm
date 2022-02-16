@@ -56,8 +56,8 @@ public class Juego {
 		elTablero.setEscaque(8, 8, new Torre(Color.NEGRAS));
 		
 		for(int i = 0; i < 8 ; i++) {
-			elTablero.setEscaque(2, 1, new Peon(Color.BLANCAS));
-			elTablero.setEscaque(7, 8, new Peon(Color.NEGRAS));
+			elTablero.setEscaque(i, 2, new Peon(Color.BLANCAS));
+			elTablero.setEscaque(i, 7, new Peon(Color.NEGRAS));
 		}	
 
 		partidaActiva = true;
