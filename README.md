@@ -81,7 +81,7 @@ FileOUT(Archivo de salida): Salida.txt
 - Generar la lista diaria de alquileres vencidos no devueltos para poder llamar a los clientes y pedirles que los devuelvan, para ello debe mostrar las fechas de alquiler y vencimiento, el teléfono y nombre del cliente, así como el titulo de la película, priorizando los que mas tiempo llevan vencidos.
 - Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.
 ## Ejercicios de refuerzo
-- Iniciación
+### Iniciación
 https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-sakila-mysql/
 # Front End
 # Proyecto 
