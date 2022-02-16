@@ -5,31 +5,9 @@ public class Tablero implements Cloneable {
 
 	Pieza[][] piezas = new Pieza[8][8];
 	
-	Tablero tablero = new Tablero();
-	
 	public Tablero() {
 		
-		piezas[0][0] = new Torre(Color.BLANCAS);
-		piezas[2][0] = new Alfil(Color.BLANCAS);
-		piezas[3][0] = new Reina(Color.BLANCAS);
-		piezas[4][0] = new Rey(Color.BLANCAS);
-		piezas[5][0] = new Alfil(Color.BLANCAS);
-		piezas[6][0] = new Caballo(Color.BLANCAS);
-		piezas[7][0] = new Torre(Color.BLANCAS);
 		
-		piezas[0][7] = new Torre(Color.NEGRAS);
-		piezas[1][7] = new Caballo(Color.NEGRAS);
-		piezas[2][7] = new Alfil(Color.NEGRAS);
-		piezas[3][7] = new Reina(Color.NEGRAS);
-		piezas[4][7] = new Rey(Color.NEGRAS);
-		piezas[5][7] = new Alfil(Color.NEGRAS);
-		piezas[6][7] = new Caballo(Color.NEGRAS);
-		piezas[7][7] = new Torre(Color.NEGRAS);
-		
-		for(int i = 0; i < 8 ; i++) {
-			piezas[i][1] = new Peon(Color.BLANCAS);
-			piezas[i][6] = new Peon(Color.NEGRAS);
-		}	
 	}
 
 
@@ -124,7 +102,7 @@ public class Tablero implements Cloneable {
 	}
 
 	public Tablero clone() throws CloneNotSupportedException {
-		return tablero.clone();
+		return this.clone();
 	}
 
 	public Color colorEscaque(int fila, int columna) {

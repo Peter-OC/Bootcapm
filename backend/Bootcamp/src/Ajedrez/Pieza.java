@@ -1,6 +1,6 @@
 package Ajedrez;
 
-public class Pieza { 
+public abstract class Pieza { 
 	
 	private Color color;
 
@@ -12,15 +12,8 @@ public class Pieza {
 	public Color getColor() {
 		return color;
 	}
-
-	public void setColor(Color color) {
-		this.color = color;
-	}
 	
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
-		return false;
-		
-	}
+	protected abstract boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException;
 	
 	public void Mover(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		if (esValido(movimiento, tablero)) {
