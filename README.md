@@ -82,6 +82,6 @@ FileOUT(Archivo de salida): Salida.txt
 - Elaborar el ranking de los países que más alquilan las películas de GINA DEGENERES.
 ## Ejercicios de refuerzo
 ### Iniciación
-https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-sakila-mysql/
+- https://www.discoduroderoer.es/ejercicios-propuestos-y-resueltos-sakila-mysql/
 # Front End
 # Proyecto 
