@@ -9,10 +9,10 @@ public class Juego {
 	}
 	
 	private Tablero elTablero;
-	private Color elTurno;
-	private boolean partidaActiva =false;
+	private static Color elTurno;
+	private static boolean partidaActiva =false;
 	
-	public Tablero getElTablero() throws JuegoException{
+	public Tablero getElTablero() throws JuegoException, CloneNotSupportedException{
 		if(!partidaActiva)
 			throw new JuegoException("No hay partida");
 		return (Tablero) elTablero.clone();
@@ -30,6 +30,9 @@ public class Juego {
 	}
 	
 	public static void Inicializar() {
+		
+		partidaActiva = true;
+		elTurno = Color.BLANCAS;
 		
 	}
 	

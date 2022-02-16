@@ -17,7 +17,7 @@ public class Pieza {
 		this.color = color;
 	}
 	
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) {
+	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		return false;
 		
 	}

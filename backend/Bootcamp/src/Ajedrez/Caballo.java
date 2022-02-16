@@ -7,7 +7,7 @@ public class Caballo extends Pieza {
 
 	}
 	@Override
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) {
+	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
 		if ((movimiento.saltoHorizontal() == 2 * movimiento.deltaFila() && movimiento.saltoVertical() == 1 * movimiento.deltaColumna())
 				|| (movimiento.saltoHorizontal() == 1 * movimiento.deltaFila() && movimiento.saltoVertical() == 2 * movimiento.deltaColumna()))
 		
