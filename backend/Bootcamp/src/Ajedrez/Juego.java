@@ -12,13 +12,17 @@ public class Juego {
 	private Color elTurno;
 	private boolean partidaActiva =false;
 	
-	public Tablero getElTablero() {
-		return elTablero;
+	public Tablero getElTablero() throws JuegoException{
+		if(!partidaActiva)
+			throw new JuegoException("No hay partida");
+		return (Tablero) elTablero.clone();
 	}
 	public void setElTablero(Tablero elTablero) {
 		this.elTablero = elTablero;
 	}
-	public Color getElTurno() {
+	public Color getElTurno() throws JuegoException {
+		if(!partidaActiva)
+			throw new JuegoException("No hay partida");
 		return elTurno;
 	}
 	public void setElTurno(Color elTurno) {
@@ -29,8 +33,12 @@ public class Juego {
 		
 	}
 	
-	public String Juagada() {
-		return null;
+	public void Juagada(String jugada) throws JuegoException {
+		
+		Movimiento movimiento = new Movimiento(jugada);
+		if (!elTablero.hayPieza(movimiento.getPosInicial())) {
+			throw new JuegoException("No hay pieza que mover");	
+		}
 		
 	}
 	

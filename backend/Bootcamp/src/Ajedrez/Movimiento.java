@@ -9,8 +9,25 @@ public class Movimiento {
 	public Movimiento(Posicion posInicial, Posicion posFinal) throws JuegoException {
 
 		if (posInicial == null) {
-			throw new JuegoException("La pieza no se ha encontrado");
+			throw new JuegoException("Movimiento no permitido");
 		}
+		if (posInicial.equals(posFinal)) {
+			throw new JuegoException("La pieza no se ha movido");
+		}
+
+		this.posInicial = posInicial;
+		this.posFinal = posFinal;
+	}
+	
+	public Movimiento(String jugada) throws JuegoException {
+
+		if (jugada == null || jugada.length()!= 4) {
+			throw new JuegoException("Movimiento no permitido");
+		}
+		//Introducir jugada b1c4
+		this.posInicial = new Posicion(jugada.charAt(1), jugada.charAt(0));
+		this.posFinal = new Posicion(jugada.charAt(3), jugada.charAt(2));;
+		
 		if (posInicial.equals(posFinal)) {
 			throw new JuegoException("La pieza no se ha movido");
 		}

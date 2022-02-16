@@ -31,19 +31,19 @@ public class Tablero implements Cloneable {
 	}
 
 
-	public Pieza getPieza(Posicion posicion, Pieza pieza) {
-		return getPieza(posicion, pieza);
+	public Pieza getEscaque(Posicion posicion, Pieza pieza) {
+		return getEscaque(posicion, pieza);
 	}
 
-	public void setPieza(Posicion posicion, Pieza pieza) {
+	public void setEscaque(Posicion posicion, Pieza pieza) {
 		this.piezas = piezas;
 	}
 	
-	public Pieza getPieza(int fila, int columna) {
+	public Pieza getEscaque(int fila, int columna) {
 		return piezas[fila][columna];
 	}
 
-	public void setPiezas(int fila, int columna) {
+	public void setEscaque(int fila, int columna) {
 		this.piezas = piezas;
 	}
 

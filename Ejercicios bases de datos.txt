@@ -31,8 +31,7 @@ FROM customer AS cu
 	INNER JOIN country AS co
 	ON ci.country_id = co.country_id
 	ON ad.city_id = ci.city_id
-	ON cu.address_id = ci.city_id
-	
+	ON cu.address_id = ci.city_id	
 WHERE co.country LIKE 'china' OR co.country LIKE 'Taiwan'
 --8
 SELECT ci.city, co.country, s.store_id, s.first_name, s.last_name, 
