@@ -7,8 +7,8 @@ public class Torre extends Pieza {
 	}
 
 	@Override
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) {
-		if (movimiento.esVertical() || movimiento.esHorizontal()) {
+	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
+		if (movimiento.esVertical() || movimiento.esHorizontal() && !tablero.hayPiezasEntre(movimiento)) {
 			return true;
 		} else {
 			return false;

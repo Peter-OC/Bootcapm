@@ -7,8 +7,8 @@ public class Peon extends Pieza{
 	}
 	
 	@Override
-	protected boolean esValido(Movimiento movimiento, Tablero tablero) {
-		if (movimiento.esVertical() || movimiento.deltaColumna()== 1) {
+	protected boolean esValido(Movimiento movimiento, Tablero tablero) throws JuegoException {
+		if (movimiento.esVertical() || movimiento.deltaColumna()== 1 && !tablero.hayPiezasEntre(movimiento)) {
 			return true;
 		} else {
 			return false;
