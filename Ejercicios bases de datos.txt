@@ -51,7 +51,9 @@ GROUP BY s.staff_id
 --9
 
 --10
-SELECT co.country, COUNT(re.rental_id) AS rental_count
+SELECT co.country,
+	COUNT(re.rental_id) AS rental_count,
+	DENSE_RANK() OVER (ORDER BY co.country) AS 'DENSE_RANK'
 FROM rental re
 	INNER JOIN customer cu 
 		ON (re.customer_id = cu.customer_id)
@@ -69,6 +71,6 @@ FROM rental re
 		ON (fa.actor_id = ac.actor_id)
 WHERE ac.first_name = 'GINA' AND ac.last_name = 'DEGENERES'
 GROUP BY co.country
-ORDER BY rental_count 
+ORDER BY rental_count DESC
 
 
