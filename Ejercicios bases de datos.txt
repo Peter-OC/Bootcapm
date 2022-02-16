@@ -2,27 +2,37 @@
 SELECT *
 FROM actor
 WHERE first_name = 'NICK'
+
 --2
 SELECT district 
 FROM address 
 WHERE district IS NOT NULL
 ORDER BY district
+
 --3
 SELECT *
 FROM film
 WHERE description LIKE '%Secret Agent%'
+
 --4
 SELECT *
 FROM film
 WHERE rental_duration 
 ORDER BY rental_duration DESC
+
 --5
+SELECT customer_id, AVG(amount) AS Total
+FROM payment
+GROUP BY customer_id
+HAVING COUNT(amount) <25 AND SUM(amount)>100
+ORDER BY Total DESC 
 
 --6
-SELECT first_name, COUNT(first_name) AS total
+SELECT first_name, COUNT(first_name) AS Total
 FROM actor
 GROUP BY first_name
 ORDER BY 2 DESC LIMIT 5
+
 --7
 SELECT cu.first_name, cu.last_name, cu.email, ad.address, ad.postal_code, ci.city, co.country
 FROM customer AS cu
@@ -33,6 +43,7 @@ FROM customer AS cu
 	ON ad.city_id = ci.city_id
 	ON cu.address_id = ci.city_id	
 WHERE co.country LIKE 'china' OR co.country LIKE 'Taiwan'
+
 --8
 SELECT ci.city, co.country, s.store_id, s.first_name, s.last_name, 
 	COUNT(inv.film_id), 
@@ -51,6 +62,8 @@ GROUP BY s.staff_id
 --9
 
 --10
+
+--11
 SELECT co.country,
 	COUNT(re.rental_id) AS rental_count,
 	DENSE_RANK() OVER (ORDER BY co.country) AS 'DENSE_RANK'
