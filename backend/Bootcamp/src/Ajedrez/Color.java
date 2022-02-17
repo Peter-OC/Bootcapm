@@ -5,7 +5,7 @@ public enum Color {
 	
 	private final String COLOR;
 		
-		//Constructora
+		//Constructor
 		private Color(String pColor) {
 			this.COLOR=pColor;
 		}

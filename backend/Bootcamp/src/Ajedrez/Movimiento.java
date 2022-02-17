@@ -32,8 +32,6 @@ public class Movimiento {
 			throw new JuegoException("La pieza no se ha movido");
 		}
 
-		this.posInicial = posInicial;
-		this.posFinal = posFinal;
 	}
 
 	public Posicion getPosInicial() {

@@ -20,19 +20,7 @@ public class Juego {
 	private Tablero elTablero;
 	private Color elTurno;
 	private boolean partidaActiva = false;
-
-	public Tablero getElTablero() throws JuegoException, CloneNotSupportedException {
-		if (!partidaActiva)
-			throw new JuegoException("No hay partida");
-		return (Tablero) elTablero.clone();
-	}
-
-	public Color getElTurno() throws JuegoException {
-		if (!partidaActiva)
-			throw new JuegoException("No hay partida");
-		return elTurno;
-	}
-
+	
 	public void Inicializar() throws JuegoException {
 		
 		elTablero = new Tablero();
@@ -63,6 +51,18 @@ public class Juego {
 		partidaActiva = true;
 		elTurno = Color.BLANCAS;
 
+	}
+
+	public Tablero getElTablero() throws JuegoException, CloneNotSupportedException {
+		if (!partidaActiva)
+			throw new JuegoException("No hay partida");
+		return (Tablero) elTablero.clone();
+	}
+
+	public Color getElTurno() throws JuegoException {
+		if (!partidaActiva)
+			throw new JuegoException("No hay partida");
+		return elTurno;
 	}
 
 	public void Juagada(String jugada) throws JuegoException {

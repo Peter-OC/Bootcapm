@@ -39,6 +39,13 @@ public class Tablero implements Cloneable {
 		
 	}
 
+	private boolean esValido(int valido) {
+		if (valido > 0 && valido < 8)
+			return true;
+		else
+			return false;
+	}
+	
 	public boolean hayPieza(int columna, int fila) {
 		//return piezas.get(columna).get(fila) != null;
 		if (piezas[columna][fila] != null) {
@@ -47,14 +54,6 @@ public class Tablero implements Cloneable {
 			return false;
 		}
 		
-	}
-
-
-	private boolean esValido(int valido) {
-		if (valido > 0 && valido < 8)
-			return true;
-		else
-			return false;
 	}
 
 	public boolean hayPieza(Posicion posicion) throws JuegoException {

@@ -22,11 +22,12 @@ public class Posicion {
 	
 	public Posicion(int laFila, int laColumna) throws JuegoException {
 		
-		if(laFila <= 0 && laFila >= 9) {
-			throw new JuegoException("No es un movimiento valido");		
-			} else {
-				throw new JuegoException("No es un movimiento valido");
-			}
+		if(laColumna < 1 || laColumna > 8 || laFila < 1 || laFila > 8) {
+			throw new IllegalArgumentException("La fila y la columna deben estar entre 1 y 8");
+ 		}else {
+	 		this.laFila = laFila;
+	 		this.laColumna= laColumna;
+ 		}
 		
 	}
 	
