@@ -168,7 +168,7 @@ GROUP BY r.rental_id
 HAVING r.return_date IS NULL
 ORDER BY tiempoAlquilado DESC, cus.first_name
 -- CORREGIDO POR JAVIER
-SELECT r.rental_date alquiler, r.rental_date + INTERVAL f.rental_durantion DAY vencimiento, a.phone telefono, CONCAT(c.first_name, last_name)
+SELECT r.rental_date alquiler, r.rental_date + INTERVAL f.rental_durantion DAY vencimiento, a.phone telefono, CONCAT(c.first_name, last_name) clientes
 	f.title pelicula
 FROM rental r
 	INNER JOIN customer c ON r.customer_id = c.customer_id
