@@ -19,6 +19,10 @@ SELECT *
 FROM film
 WHERE rental_duration 
 ORDER BY rental_duration DESC
+-- CORREGIDA POR JAVIER
+SELECT title, rental_rate / LENGTH coste
+FROM film
+ORDER BY coste DESC
 
 --5
 SELECT customer_id, AVG(amount) AS Total
@@ -26,12 +30,24 @@ FROM payment
 GROUP BY customer_id
 HAVING COUNT(amount) <25 AND SUM(amount)>100
 ORDER BY Total DESC 
+-- CORREGIDO POR JAVIER
+SELECT customer_id, AVG(amount) media, SUM(amount) gasto, COUNT(customer_id) pagos
+FROM payment
+GROUP BY customer_id
+HAVING SUM(amount) >100 AND COUNT(*) <25
+ORDER BY pagos, media DESC, gasto;
 
 --6
 SELECT first_name, COUNT(first_name) AS Total
 FROM actor
 GROUP BY first_name
 ORDER BY 2 DESC LIMIT 5
+-- CORREGIDO POR JAVIER
+SELECT first_name nombre, COUNT(*) apariciones
+FROM actor
+GROUP BY first_name
+ORDER BY apariciones DESC 
+LIMIT 5;
 
 --7
 SELECT cu.first_name, cu.last_name, cu.email, ad.address, ad.postal_code, ci.city, co.country
@@ -43,6 +59,17 @@ FROM customer AS cu
 	ON ad.city_id = ci.city_id
 	ON cu.address_id = ci.city_id	
 WHERE co.country LIKE 'china' OR co.country LIKE 'Taiwan'
+--CORREGIDO POR JAVIER
+SELECT CONCAT(cu.first_name, ' ', cu.last_name) nombre, ad.address, ad.postal_code, ci.city, co.country
+FROM customer cu
+	INNER JOIN address ad
+		ON cu.address_id = ad.address_id
+	INNER JOIN city ci
+		ON ad.city_id = ci.city_id
+	INNER JOIN country co
+		ON ci.country_id = co.country_id	
+WHERE co.country IN ('china', 'Taiwan')
+ORDER BY nombre
 
 --8
 SELECT ci.city, co.country, s.store_id, s.first_name, s.last_name, 
@@ -51,13 +78,29 @@ SELECT ci.city, co.country, s.store_id, s.first_name, s.last_name,
 	COUNT(DISTINCT cus.store_id)
 FROM staff AS s
 INNER JOIN
-(address AS a INNER JOIN city 
-	AS ci INNER JOIN country 
-	AS co ON ci.country_id = co.country_id ON a.city_id = ci.city_id)
+	(address AS a INNER JOIN city AS ci 
+		ON a.city_id = ci.city_id
+	INNER JOIN country AS co 
+		ON ci.country_id = co.country_id 
+	)
 	ON s.address_id = a.address_id
-INNER JOIN inventory AS inv ON s.store_id = inv.store_id
-INNER JOIN customer AS cus ON s.store_id = cus.store_id
+INNER JOIN inventory AS inv 
+	ON s.store_id = inv.store_id
+INNER JOIN customer AS cus 
+	ON s.store_id = cus.store_id
 GROUP BY s.staff_id
+-- CORREGIDO POR JAVIER
+SELECT t.store_id codigo, CONCAT(l.city, ', ', p.country) tienda,
+	CONCAT(e.first_name, ' ', e.last_name) jefe,
+	(SELECT COUNT(i.film_id) FROM inventory i WHERE i.store_id = t.store_id) peliculas,
+	(SELECT COUNT(*) FROM(
+		SELECT DISTINCT i.film_id
+	) td) clientes
+DROM store t
+	INNER JOIN staff e ON i.manager_staff = e.staff_id
+	INNER JOIN address a ON t.address_id = a.address_id
+	INNER JOIN city l ON a.city_id = l.city_id
+	INNER JOIN country p ON l.country_id = p.country_id
 
 --9
 -- En este me ayudo Alberto porue no entendia como solucionar la consulta
@@ -85,6 +128,20 @@ FROM rental AS r
 	INNER JOIN customer AS cus 
 		ON r.customer_id = cus.customer_id
 GROUP BY r.rental_id
+-- CORREGIDO POR JAVIER
+SELECT rental_id, title pelicula, rental_date alquilada, return_date devuelta, DATEDIFF(return_date, rental_date) tiempo,
+	CONCAT(c.first_name, ' ', c.last_name) cliente,
+	CONCAT(e.first_name, ' ', e.last_name) empleado,
+	CONCAT(l.city,', ', p.country) tienda
+FROM rental r
+	INNER JOIN customer c ON r.customer_id = c.customer_id
+	INNER JOIN staff e ON r.staff_id = e.staff_id
+	INNER JOIN inventory i ON r.inventory_id = i.inventory_id
+	INNER JOIN film f ON i.film_id = f.film_id
+	INNER JOIN store t ON i.store_id = t.store_id
+	INNER JOIN address a ON t.address_id = a.address_id
+	INNER JOIN city l ON a.city_id = l.city_id
+	INNER JOIN country p ON l.country_id = p.country_id
 
 --10
 SELECT r.rental_id, fT.title Titulo, r.rental_date 'Fecha de alquiler', 
@@ -110,6 +167,18 @@ FROM rental AS r
 GROUP BY r.rental_id
 HAVING r.return_date IS NULL
 ORDER BY tiempoAlquilado DESC, cus.first_name
+-- CORREGIDO POR JAVIER
+SELECT r.rental_date alquiler, r.rental_date + INTERVAL f.rental_durantion DAY vencimiento, a.phone telefono, CONCAT(c.first_name, last_name)
+	f.title pelicula
+FROM rental r
+	INNER JOIN customer c ON r.customer_id = c.customer_id
+	INNER JOIN address a ON c.address_id = a.address_id
+	INNER JOIN inventory i ON r.inventory_id = i.inventory_id
+	INNER JOIN film f ON i.film_id = f.film_id
+WHERE r.return_date IS NULL
+	AND rental:date + INTERVAL f.rental_duration DAY < CURRENT_DATE()
+ORDER BY cencimiento, alquiler
+
 
 --11
 SELECT co.country, 
@@ -133,3 +202,16 @@ FROM rental re
 WHERE ac.first_name = 'GINA' AND ac.last_name = 'DEGENERES'
 GROUP BY co.country
 ORDER BY rental_count DESC
+-- CORREGIDO POR JAVIER
+SELECT RANK() OVER (ORDER BY COUNT(*) DESC) ranking, p.country pais, COUNT(*) alquileres
+FROM actor
+	INNER JOIN film_actor f ON actor.actor_id = f.actor_id
+	INNER JOIN inventory i ON f.film_id = i.film_id
+	INNER JOIN rental r ON i.inventory_id = r.inventory_id
+	INNER JOIN customer c ON r.customer_id = c.customer_id
+	INNER JOIN address a ON c.address_id = a.address_id
+	INNER JOIN city l ON a.city_id = l.city_id
+	INNER JOIN country p ON l.country_id = p.country_id
+WHERE actor.first_name = 'GINA' AND actor.last_name = 'DEGENERES'
+GROUP BY co.country
+ORDER BY ranking, pais
