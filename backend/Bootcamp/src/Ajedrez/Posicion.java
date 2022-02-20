@@ -22,7 +22,7 @@ public class Posicion {
 	
 	public Posicion(int laFila, int laColumna) throws JuegoException {
 		
-		if(laColumna < 1 || laColumna > 8 || laFila < 1 || laFila > 8) {
+		if((laColumna < 1 || laColumna > 8) || (laFila < 1 || laFila > 8)) {
 			throw new IllegalArgumentException("La fila y la columna deben estar entre 1 y 8");
  		}else {
 	 		this.laFila = laFila;
@@ -31,15 +31,18 @@ public class Posicion {
 		
 	}
 	
-	public Posicion(char laFila, char laColumna) throws JuegoException {
-		
-		if(laFila <= 'A' && laFila >= 'H') {
-			throw new JuegoException("No es un movimiento valido");		
-			} else {
-				throw new JuegoException("No es un movimiento valido");	
-			}
-		
-	}
+	public Posicion(char fila, char columna) throws JuegoException {
+        if ('A' <= columna && columna <= 'H') {
+            this.laColumna = columna - 'A' + 1;
+        } else {
+            throw new JuegoException("La columna debe estar entra la A y la H");
+        }
+        if ('1' <= fila && fila <= '8') {
+            this.laFila = fila - '0' + 1;
+        } else {
+            throw new JuegoException("La fila debe estar entra el 1 y el 8");
+        }
+    }
 	
 	/**
 	 * 

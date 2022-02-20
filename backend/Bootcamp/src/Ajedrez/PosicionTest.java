@@ -31,7 +31,16 @@ class PosicionTest {
 
 	@Test
 	void testPosicionIntInt() {
-		fail("Not yet implemented");
+		var juego = new Juego();
+
+		try {
+			juego.Inicializar();
+			juego.Juagada("A2A4");
+			juego.Juagada("A7A5");
+		} catch (JuegoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test

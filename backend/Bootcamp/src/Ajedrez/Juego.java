@@ -8,8 +8,8 @@ public class Juego {
 
 		try {
 			juego.Inicializar();
-			juego.Juagada("A2A4");
-			juego.Juagada("A7A5");
+//			juego.Juagada("A2A4");
+//			juego.Juagada("A7A5");
 		} catch (JuegoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class Juego {
 		elTablero.setEscaque(7, 8, new Caballo(Color.NEGRAS));
 		elTablero.setEscaque(8, 8, new Torre(Color.NEGRAS));
 		
-		for(int i = 0; i < 8 ; i++) {
+		for(int i = 1; i < 9 ; i++) {
 			elTablero.setEscaque(i, 2, new Peon(Color.BLANCAS));
 			elTablero.setEscaque(i, 7, new Peon(Color.NEGRAS));
 		}	

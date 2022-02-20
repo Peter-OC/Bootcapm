@@ -21,8 +21,8 @@ public class Tablero implements Cloneable {
 	public void setEscaque(int columna, int fila, Pieza pieza) throws JuegoException {
 		//comprobar que la posicion es correcta, >- 0 && < 8
 		if(!(esValido(columna) && esValido(fila)))
-			throw new JuegoException("La posicion no es valida");
-		
+			throw new JuegoException("La posicion no es valida");	
+					
 		if(hayPieza(columna, fila)) { //si la pieza es del otro color, la elimino y pongo la mia.
 			
 			if(getEscaque(columna,fila).getColor()!= pieza.getColor()) { // significa que la pieza no es mia
@@ -34,13 +34,13 @@ public class Tablero implements Cloneable {
 				
 			}
 		} else {
-			piezas[columna][fila] = pieza;
+			piezas[columna-1][fila-1] = pieza;
 		}
 		
 	}
 
 	private boolean esValido(int valido) {
-		if (valido > 0 && valido < 8)
+		if (valido > 0 && valido < 9)
 			return true;
 		else
 			return false;
@@ -48,7 +48,7 @@ public class Tablero implements Cloneable {
 	
 	public boolean hayPieza(int columna, int fila) {
 		//return piezas.get(columna).get(fila) != null;
-		if (piezas[columna][fila] != null) {
+		if (piezas[columna-1][fila-1] != null) {
 			return true;
 		} else {
 			return false;
