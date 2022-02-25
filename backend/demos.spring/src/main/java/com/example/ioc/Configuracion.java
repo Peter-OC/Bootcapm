@@ -13,5 +13,4 @@ public class Configuracion {
 		System.out.println("Creando el servicio de " + dep.getName());
 		return new ServicioMock();
 	}
-
 }
