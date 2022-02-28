@@ -2,8 +2,18 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.validator.constraints.Length;
+
+import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -13,7 +23,7 @@ import java.util.List;
 @Entity
 @Table(name="country")
 @NamedQuery(name="Country.findAll", query="SELECT c FROM Country c")
-public class Country implements Serializable {
+public class Country extends EntityBase<Country> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,14 +31,52 @@ public class Country implements Serializable {
 	@Column(name="country_id")
 	private int countryId;
 
+	@NotBlank
+	@Length(max = 50)
 	private String country;
-
+	
 	@Column(name="last_update")
+	@Generated(value = GenerationTime.ALWAYS)
 	private Timestamp lastUpdate;
+	
+	//bi-directional many-to-one association to FilmCategory
+		@OneToMany(mappedBy="country")
+		@JsonIgnore
+		private List<City> cities;
+		
+	public Country(int countryId, @NotBlank @Length(max = 50) String country, Timestamp lastUpdate, List<City> cities) {
+		super();
+		this.countryId = countryId;
+		this.country = country;
+		this.lastUpdate = lastUpdate;
+		this.cities = cities;
+	}
+	
+	public Country(int countryId) {
+		super();
+		this.countryId = countryId;
+	}
 
-	//bi-directional many-to-one association to City
-	@OneToMany(mappedBy="country")
-	private List<City> cities;
+	@Override
+	public int hashCode() {
+		return Objects.hash(countryId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Country))
+			return false;
+		Country other = (Country) obj;
+		return countryId == other.countryId;
+	}	
+
+	@Override
+	public String toString() {
+		return "Country [countryId=" + countryId + ", country=" + country + ", lastUpdate=" + lastUpdate + ", cities="
+				+ cities + "]";
+	}
 
 	public Country() {
 	}
