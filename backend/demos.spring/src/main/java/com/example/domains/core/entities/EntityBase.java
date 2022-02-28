@@ -7,7 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-public class EntityBase<E> {
+public abstract class EntityBase<E> {
 	
 	@Transient
 	public Set<ConstraintViolation<E>> getErrors() {

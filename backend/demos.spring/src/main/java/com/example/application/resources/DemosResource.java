@@ -16,7 +16,7 @@ import com.example.application.dtos.ActorDTO;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
-@RestController
+@RestController //Avisa que es esto es un controlador de tipo rest
 @RequestMapping(path = "/demos")
 public class DemosResource {
 
