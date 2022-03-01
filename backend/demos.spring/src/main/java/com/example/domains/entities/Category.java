@@ -123,6 +123,11 @@ public class Category extends EntityBase<Category> implements Serializable {
 		Category other = (Category) obj;
 		return categoryId == other.categoryId;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
+	}
 	
 	
 

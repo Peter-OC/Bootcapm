@@ -39,11 +39,11 @@ public class FilmActor implements Serializable {
 	public FilmActor() {
 	}
 
-	public FilmActor(Actor actor, Film film) {
+	public FilmActor(Actor actor, Film film) { //Hay que crear este constructor y le metemos el metodo que hemos hecho en FilmActorPK
 		super();
 		this.actor = actor;
 		this.film = film;
-		this.id = new FilmActorPK(actor.getActorId(), film.getFilmId());
+		this.id = new FilmActorPK(actor.getActorId(), film.getFilmId());//con esto ya ponemos crear los metodos add y remove en la entity Film
 	}
 
 	public FilmActorPK getId() {
