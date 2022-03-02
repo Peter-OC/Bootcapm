@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -27,22 +26,22 @@ import com.example.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 
 @RestController
-@RequestMapping("/api/categorias")
+//@RequestMapping("/api/categorias")
 public class CategoryResource {
 	@Autowired
 	private CategoryService srv;
 
-	@GetMapping
+	@GetMapping(path = "/api/categorias")
 	public List<Category> getAll() {
 		return srv.getAll();
 	}
 
-	@GetMapping(path = "/{id}")
+	@GetMapping(path = "/api/categorias/{id}")
 	public Category getOne(@PathVariable int id) throws NotFoundException {
 		return srv.getOne(id);
 	}
 	
-	@PostMapping
+	@PostMapping(path = "/api/categorias")
 	public ResponseEntity<Object> create(@Valid @RequestBody Category item) throws InvalidDataException, DuplicateKeyException {
 		if(item.isInvalid())
 			throw new InvalidDataException(item.getErrorsMessage());
@@ -53,7 +52,7 @@ public class CategoryResource {
 
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping(path = "/api/categorias/{id}")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void update(@PathVariable int id, @Valid @RequestBody Category item) throws InvalidDataException, NotFoundException {
 		if(id != item.getCategoryId())
@@ -63,7 +62,7 @@ public class CategoryResource {
 		srv.change(item);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping(path = "/api/categorias/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable int id) {
 		srv.deleteById(id);

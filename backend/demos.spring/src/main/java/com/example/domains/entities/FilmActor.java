@@ -7,6 +7,7 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 
 /**
@@ -39,11 +40,11 @@ public class FilmActor implements Serializable {
 	public FilmActor() {
 	}
 
-	public FilmActor(Actor actor, Film film) { //Hay que crear este constructor y le metemos el metodo que hemos hecho en FilmActorPK
+	public FilmActor(Actor actor, Film film) {
 		super();
 		this.actor = actor;
 		this.film = film;
-		this.id = new FilmActorPK(actor.getActorId(), film.getFilmId());//con esto ya ponemos crear los metodos add y remove en la entity Film
+		this.id = new FilmActorPK(actor.getActorId(), film.getFilmId());
 	}
 
 	public FilmActorPK getId() {
@@ -76,6 +77,21 @@ public class FilmActor implements Serializable {
 
 	public void setFilm(Film film) {
 		this.film = film;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof FilmActor))
+			return false;
+		FilmActor other = (FilmActor) obj; 
+		return Objects.equals(id, other.id);
 	}
 
 }

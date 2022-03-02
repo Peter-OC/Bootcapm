@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -31,7 +32,7 @@ public class City extends EntityBase<City> implements Serializable {
 	private int cityId;
 
 	@NotBlank
-	@Length(max = 50)
+	@Length(max=50)
 	private String city;
 
 	@Column(name="last_update")
@@ -40,6 +41,7 @@ public class City extends EntityBase<City> implements Serializable {
 
 	//bi-directional many-to-one association to Address
 	@OneToMany(mappedBy="city")
+	@JsonIgnore
 	private List<Address> addresses;
 
 	//bi-directional many-to-one association to Country
@@ -50,6 +52,11 @@ public class City extends EntityBase<City> implements Serializable {
 	public City() {
 	}
 	
+	public City(int cityId) {
+		super();
+		this.cityId = cityId;
+	}
+
 	public City(int cityId, @NotBlank @Length(max = 50) String city, Country country) {
 		super();
 		this.cityId = cityId;
@@ -57,37 +64,14 @@ public class City extends EntityBase<City> implements Serializable {
 		this.country = country;
 	}
 
-	public City(int cityId, @NotBlank @Length(max = 50) String city, Timestamp lastUpdate, List<Address> addresses,
-			Country country) {
+	public City(int cityId, @NotBlank @Length(max = 50) String city, List<Address> addresses) {
 		super();
 		this.cityId = cityId;
 		this.city = city;
-		this.lastUpdate = lastUpdate;
 		this.addresses = addresses;
-		this.country = country;
 	}
 
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(cityId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof City))
-			return false;
-		City other = (City) obj;
-		return cityId == other.cityId;
-	}
-	
-
-	@Override
-	public String toString() {
-		return "City [cityId=" + cityId + ", city=" + city + ", country=" + country + "]";
-	}
 
 	public int getCityId() {
 		return this.cityId;
@@ -141,6 +125,26 @@ public class City extends EntityBase<City> implements Serializable {
 
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cityId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof City))
+			return false;
+		City other = (City) obj;
+		return cityId == other.cityId;
+	}
+
+	@Override
+	public String toString() {
+		return "City [cityId=" + cityId + ", city=" + city + ", country=" + country + "]";
 	}
 
 }

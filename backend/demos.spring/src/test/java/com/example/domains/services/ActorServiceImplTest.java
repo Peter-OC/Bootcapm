@@ -71,7 +71,7 @@ class ActorServiceImplTest {
 		assertEquals(1, rslt.getActorId());
 	}
 	@Test
-	void testAddNull() {//que pasa si paso null
+	void testAddNull() {
 		var srv = new ActorServiceImpl(dao);
 		
 		assertThrows(IllegalArgumentException.class, () -> srv.add(null));

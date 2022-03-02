@@ -9,8 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.domains.entities.City;
 
-public interface CiudadesRepository extends JpaRepository<City, Integer>{
-		
+public interface CiudadesRepository extends JpaRepository<City, Integer> {
 	<T> List<T> findByCityIdIsNotNull(Class<T> type);
 	<T> Iterable<T> findByCityIdIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByCityIdIsNotNull(Pageable pageable, Class<T> type);

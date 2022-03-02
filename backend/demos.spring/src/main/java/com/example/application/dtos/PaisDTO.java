@@ -1,9 +1,5 @@
 package com.example.application.dtos;
 
-import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.Length;
-
 import com.example.domains.entities.Country;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,12 +15,11 @@ public class PaisDTO {
 	private String country;
 	
 	public static Country from(PaisDTO source) {
-		return new Country(source.getCountryId(), source.getCountry(), null, null);
+		return new Country(source.getCountryId(), source.getCountry());
 	}
 	
 	public static PaisDTO from(Country source) {
 		return new PaisDTO(source.getCountryId(), source.getCountry());
 	}
-
 
 }

@@ -2,13 +2,9 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-
-import com.example.domains.core.entities.EntityBase;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -21,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name="film_category")
 @NamedQuery(name="FilmCategory.findAll", query="SELECT f FROM FilmCategory f")
-public class FilmCategory extends EntityBase<FilmCategory> implements Serializable {
+public class FilmCategory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
@@ -29,8 +25,6 @@ public class FilmCategory extends EntityBase<FilmCategory> implements Serializab
 
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
-	@PastOrPresent
-	@JsonFormat(pattern = "yyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to Category
@@ -45,38 +39,12 @@ public class FilmCategory extends EntityBase<FilmCategory> implements Serializab
 
 	public FilmCategory() {
 	}
-	
-	public FilmCategory(FilmCategoryPK id) {
-		super();
-		this.id = id;
-	}
 
-	public FilmCategory(FilmCategoryPK id, @PastOrPresent Timestamp lastUpdate, Category category, Film film) {
+	public FilmCategory(Category category, Film film) {
 		super();
-		this.id = id;
-		this.lastUpdate = lastUpdate;
 		this.category = category;
 		this.film = film;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof FilmCategory))
-			return false;
-		FilmCategory other = (FilmCategory) obj;
-		return Objects.equals(id, other.id);
-	}
-
-	@Override
-	public String toString() {
-		return "FilmCategory [id=" + id + ", category=" + category + ", film=" + film + "]";
+		this.id = new FilmCategoryPK(category.getCategoryId(), film.getFilmId());
 	}
 
 	public FilmCategoryPK getId() {
@@ -109,6 +77,21 @@ public class FilmCategory extends EntityBase<FilmCategory> implements Serializab
 
 	public void setFilm(Film film) {
 		this.film = film;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof FilmCategory))
+			return false;
+		FilmCategory other = (FilmCategory) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }

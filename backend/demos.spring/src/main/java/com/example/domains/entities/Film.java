@@ -7,19 +7,15 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.lang.NonNull;
 
 import com.example.domains.core.entities.EntityBase;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -27,87 +23,79 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 /**
  * The persistent class for the film database table.
  * 
  */
 @Entity
-@Table(name="film")
-@NamedQuery(name="Film.findAll", query="SELECT f FROM Film f")
+@Table(name = "film")
+@NamedQuery(name = "Film.findAll", query = "SELECT f FROM Film f")
 public class Film extends EntityBase<Film> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="film_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "film_id")
 	private int filmId;
-	
-	@Column(name = "titulo")
+
 	@NotBlank
-	@Length(min = 2, max = 128)
+	@Length(max = 128)
 	private String title;
 
 	@Lob
 	private String description;
 
-	@Column(name="last_update")
-	@Generated(value = GenerationTime.ALWAYS)
-	@PastOrPresent
-	private Timestamp lastUpdate;
-
-	@Positive
-	private int length;
-
-	private String rating;
-
-	@Column(name="release_year")
+	@Column(name = "release_year")
 	@Min(1901)
 	@Max(2155)
-	private Short releaseYear;//Short con mayus para que acepte nullos
+	private Short releaseYear;
 
-	@Column(name="rental_duration")
-	@NotBlank
+	// bi-directional many-to-one association to Language
+	@ManyToOne
+	@JoinColumn(name = "language_id")
+	private Language language;
+
+	// bi-directional many-to-one association to Language
+	@ManyToOne
+	@JoinColumn(name = "original_language_id")
+	private Language languageVO;
+
+	@Column(name = "rental_duration")
+	@NotNull
 	@PositiveOrZero
 	private byte rentalDuration;
 
-	@Column(name="rental_rate")
-	@Positive
-	@NonNull
+	@Column(name = "rental_rate")
+	@NotNull
 	@DecimalMin(value = "0.0", inclusive = false)
 	@Digits(integer = 2, fraction = 2)
 	private BigDecimal rentalRate;
 
-	@Column(name="replacement_cost")
 	@Positive
-	@NonNull
+	private int length;
+
+	@Column(name = "replacement_cost")
+	@NotNull
 	@DecimalMin(value = "0.0", inclusive = false)
-	@Digits(integer = 5, fraction = 2)
+	@Digits(integer = 3, fraction = 2)
 	private BigDecimal replacementCost;
 
-	//bi-directional many-to-one association to Language
-	@ManyToOne
-	@JoinColumn(name="language_id")
-	@Positive
-	@NotBlank
-	private Language language;
+	private String rating;
 
-	//bi-directional many-to-one association to Language
-	@ManyToOne
-	@JoinColumn(name="original_language_id")
-	@Positive
-	private Language languageVO;
+	@Column(name = "last_update")
+	@Generated(value = GenerationTime.ALWAYS)
+	private Timestamp lastUpdate;
 
-	//bi-directional many-to-one association to FilmActor
-	@OneToMany(mappedBy="film")
+	// bi-directional many-to-one association to FilmActor
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FilmActor> filmActors;
 
-	//bi-directional many-to-one association to FilmCategory
-	@OneToMany(mappedBy="film")
+	// bi-directional many-to-one association to FilmCategory
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FilmCategory> filmCategories;
 
-	//bi-directional many-to-one association to Inventory
-	@OneToMany(mappedBy="film")
+	// bi-directional many-to-one association to Inventory
+	@OneToMany(mappedBy = "film")
 	private List<Inventory> inventories;
 
 	public Film() {
@@ -118,59 +106,29 @@ public class Film extends EntityBase<Film> implements Serializable {
 	}
 
 	public Film(int filmId) {
-		super();
+		this();
 		this.filmId = filmId;
-	}	
-	
-	public Film(int filmId, @NotBlank @Length(min = 2, max = 128) String title) {
-		super();
-		this.filmId = filmId;
-		this.title = title;
 	}
 
-	public Film(int filmId, @NotBlank @Length(min = 2, max = 128) String title, String description,
-			@PastOrPresent Timestamp lastUpdate, @Positive int length, String rating,
-			@Min(1901) @Max(2155) Short releaseYear, @NotBlank @PositiveOrZero byte rentalDuration,
-			@Positive @DecimalMin(value = "0.0", inclusive = false) @Digits(integer = 2, fraction = 2) BigDecimal rentalRate,
-			@Positive @DecimalMin(value = "0.0", inclusive = false) @Digits(integer = 5, fraction = 2) BigDecimal replacementCost,
-			@Positive @NotBlank Language language, @Positive Language languageVO, List<FilmActor> filmActors,
-			List<FilmCategory> filmCategories, List<Inventory> inventories) {
-		super();
+	public Film(int filmId, @NotBlank @Length(max = 128) String title, String description,
+			@Min(1901) @Max(2155) short releaseYear, Language language, Language languageVO,
+			@NotNull @Positive byte rentalDuration,
+			@NotNull @DecimalMin(value = "0.0", inclusive = false) @Digits(integer = 2, fraction = 2) BigDecimal rentalRate,
+			@Positive int length,
+			@NotNull @DecimalMin(value = "0.0", inclusive = false) @Digits(integer = 3, fraction = 2) BigDecimal replacementCost,
+			String rating) {
+		this();
 		this.filmId = filmId;
 		this.title = title;
 		this.description = description;
-		this.lastUpdate = lastUpdate;
-		this.length = length;
-		this.rating = rating;
 		this.releaseYear = releaseYear;
-		this.rentalDuration = rentalDuration;
-		this.rentalRate = rentalRate;
-		this.replacementCost = replacementCost;
 		this.language = language;
 		this.languageVO = languageVO;
-		this.filmActors = filmActors;
-		this.filmCategories = filmCategories;
-		this.inventories = inventories;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(filmId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof Film))
-			return false;
-		Film other = (Film) obj;
-		return filmId == other.filmId;
-	}
-
-	@Override
-	public String toString() {
-		return "Film [filmId=" + filmId + ", description=" + description + ", title=" + title + "]";
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
 	}
 
 	public int getFilmId() {
@@ -283,12 +241,10 @@ public class Film extends EntityBase<Film> implements Serializable {
 
 		return filmActor;
 	}
-	
-	public FilmActor addFilmActor(Actor actor) {
-		var filmActor = new FilmActor(actor, this);//le pasa el actor
-		getFilmActors().add(filmActor);//lo añade a la collecion de actores
-		filmActor.setFilm(this);
 
+	public FilmActor addFilmActor(Actor actor) {
+		var filmActor = new FilmActor(actor, this);
+		getFilmActors().add(filmActor);
 		return filmActor;
 	}
 
@@ -298,17 +254,17 @@ public class Film extends EntityBase<Film> implements Serializable {
 
 		return filmActor;
 	}
-	
+
 	public FilmActor removeFilmActor(Actor actor) {
-		var filmActor = getFilmActors().stream()//le pasa el actor
-				.filter(Item -> Item.getId().getActorId() == actor.getActorId())
-				.findFirst();
-		if(filmActor.isPresent()) {
-			getFilmActors().remove(filmActor);//lo borra de la collecion
-			filmActor.get(). setFilm(null);
-		}
-		// getFilmActors().remove(new FilmActor(actor, this));
-		return filmActor.get();
+//		var filmActor = getFilmActors().stream().filter(item -> item.getId().getActorId() == actor.getActorId())
+//				.findFirst();
+//		if (filmActor.isPresent()) {
+//			getFilmActors().remove(filmActor.get());
+//			filmActor.get().setFilm(null);
+//		}
+		var filmActor = new FilmActor(actor, this);
+		getFilmActors().remove(filmActor);
+		return filmActor;
 	}
 
 	public List<FilmCategory> getFilmCategories() {
@@ -326,10 +282,23 @@ public class Film extends EntityBase<Film> implements Serializable {
 		return filmCategory;
 	}
 
+	public FilmCategory addFilmCategory(Category category) {
+		var filmCategory = new FilmCategory(category, this);
+		getFilmCategories().add(filmCategory);
+		return filmCategory;
+	}
+
 	public FilmCategory removeFilmCategory(FilmCategory filmCategory) {
 		getFilmCategories().remove(filmCategory);
 		filmCategory.setFilm(null);
 
+		return filmCategory;
+	}
+
+	public FilmCategory removeFilmCategory(Category category) {
+		var filmCategory = new FilmCategory(category, this);
+		getFilmCategories().remove(filmCategory);
+		filmCategory.setFilm(null);
 		return filmCategory;
 	}
 
@@ -355,6 +324,23 @@ public class Film extends EntityBase<Film> implements Serializable {
 		return inventory;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(filmId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Film))
+			return false;
+		return filmId == ((Film) obj).filmId;
+	}
+
+	@Override
+	public String toString() {
+		return "Film [filmId=" + filmId + ", title=" + title + "]";
+	}
 
 }

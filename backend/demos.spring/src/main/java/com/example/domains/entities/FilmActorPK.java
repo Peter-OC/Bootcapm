@@ -20,7 +20,7 @@ public class FilmActorPK implements Serializable {
 
 	public FilmActorPK() {
 	}
-	public FilmActorPK(int actorId, int filmId) {//Hay que crear este constructor para el addFilmActor y removeFilmActor de la entidad Film
+	public FilmActorPK(int actorId, int filmId) {
 		super();
 		this.actorId = actorId;
 		this.filmId = filmId;

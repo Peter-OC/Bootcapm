@@ -9,9 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.domains.entities.Country;
 
-public interface PaisesRepository extends JpaRepository<Country, Integer>{
-	
-	
+public interface PaisesRepository extends JpaRepository<Country, Integer> {
 	<T> List<T> findByCountryIdIsNotNull(Class<T> type);
 	<T> Iterable<T> findByCountryIdIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByCountryIdIsNotNull(Pageable pageable, Class<T> type);

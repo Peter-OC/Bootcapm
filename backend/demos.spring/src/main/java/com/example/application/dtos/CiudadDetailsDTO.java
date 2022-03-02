@@ -17,7 +17,7 @@ public class CiudadDetailsDTO {
 	public static CiudadDetailsDTO from(City source) {
 		return new CiudadDetailsDTO(
 				source.getCityId(), 
-				source.getCity(), 
-				source.getCountry().getCountry());//con el primero cojo el objeto y con el segundo get lo combierto en cadena
+				source.getCity(),
+				source.getCountry().getCountry());
 	}
 }

@@ -9,8 +9,6 @@ import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.entities.EntityBase;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -23,7 +21,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name="language")
-@NamedQuery(name="Language.findAll", query="SELECT c FROM Language c")
+@NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
 public class Language extends EntityBase<Language> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,58 +35,29 @@ public class Language extends EntityBase<Language> implements Serializable {
 	private Timestamp lastUpdate;
 
 	@NotBlank
-	@Length(max = 20)
+	@Length(max=20)
 	private String name;
 
 	//bi-directional many-to-one association to Film
 	@OneToMany(mappedBy="language")
-	@JsonIgnore
 	private List<Film> films;
 
 	//bi-directional many-to-one association to Film
 	@OneToMany(mappedBy="languageVO")
-	@JsonIgnore
 	private List<Film> filmsVO;
 
-
 	public Language() {
-		super();
 	}
-	
+
 	public Language(int languageId) {
 		super();
 		this.languageId = languageId;
 	}
-	
+
 	public Language(int languageId, @NotBlank @Length(max = 20) String name) {
 		super();
 		this.languageId = languageId;
 		this.name = name;
-	}
-	
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(languageId);
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof Language))
-			return false;
-		Language other = (Language) obj;
-		return languageId == other.languageId;
-	}
-	
-
-
-	@Override
-	public String toString() {
-		return "Language [languageId=" + languageId + ", lastUpdate=" + lastUpdate + ", name=" + name + ", films="
-				+ films + ", filmsVO=" + filmsVO + "]";
 	}
 
 	public int getLanguageId() {
@@ -157,6 +126,26 @@ public class Language extends EntityBase<Language> implements Serializable {
 		filmsVO.setLanguageVO(null);
 
 		return filmsVO;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(languageId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Language))
+			return false;
+		Language other = (Language) obj;
+		return languageId == other.languageId;
+	}
+
+	@Override
+	public String toString() {
+		return "Language [languageId=" + languageId + ", name=" + name + ", lastUpdate=" + lastUpdate + "]";
 	}
 
 }

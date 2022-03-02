@@ -3,26 +3,8 @@ package com.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.application.dtos.ActorDTO;
-import com.example.application.dtos.ActorShortDTO;
-import com.example.domains.contracts.repositories.ActorRepositoy;
-import com.example.domains.contracts.services.ActorService;
-import com.example.domains.entities.Actor;
-import com.example.exceptions.DuplicateKeyException;
-import com.example.exceptions.InvalidDataException;
-import com.example.ioc.Servicio;
-import com.example.jdbc.ConsultaSQL;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.sql.Date;
-import java.sql.Timestamp;
-
 import javax.transaction.Transactional;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 
 @SpringBootApplication
@@ -32,23 +14,23 @@ public class Application implements CommandLineRunner {
 		SpringApplication.run(Application.class, args);
 	}
 	
-	@Autowired
-	@Qualifier("despliegue")
-	Servicio srv;
-	
-	@Autowired(required = false)
-	@Qualifier("manual")
-	Servicio srv1;
-	
-	@Autowired
-	ConsultaSQL jdbc;
-	
-	@Autowired
-	ActorRepositoy dao;
-
-	
-	@Autowired
-	ActorService srvActor;
+//	@Autowired
+//	@Qualifier("despliegue")
+//	Servicio srv;
+//	
+//	@Autowired(required = false)
+//	@Qualifier("manual")
+//	Servicio srv1;
+//	
+//	@Autowired
+//	ConsultaSQL jdbc;
+//	
+//	@Autowired
+//	ActorRepositoy dao;
+//
+//	
+//	@Autowired
+//	ActorService srvActor;
 
 	@Override
 	@Transactional
@@ -99,7 +81,6 @@ public class Application implements CommandLineRunner {
 //			System.out.println(objectMapper.writeValueAsString(ActorDTO.from(a)));
 //			System.out.println(objectMapper.writeValueAsString(a));
 //		} catch (JsonProcessingException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 		
@@ -108,49 +89,47 @@ public class Application implements CommandLineRunner {
 //		try {
 //			srvActor.add(new Actor(0, "", null, new Timestamp(0)));
 //		} catch (DuplicateKeyException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		} catch (InvalidDataException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 	}
 
-	@Transactional
-	private void crud() {
-		System.out.println("Create <-----------------------");
-		var a = new Actor("Pepito", "Grillo");
-		dao.save(a);
-		System.out.println(a);
-		a.addFilmActor(1);
-		a.addFilmActor(2);
-		a.addFilmActor(14);
-		dao.save(a);
-
-		System.out.println("Read <-----------------------");
-		var newId = a.getActorId();
-		a = dao.getById(newId);
-		System.out.println(a);
-		a.getFilmActors().forEach(item -> System.out.println(item.getFilm().getTitle()));
-
-		System.out.println("Update <-----------------------");
-		a.setFirstName(a.getFirstName().toUpperCase());
-		a.removeFilmActor(a.getFilmActors().get(1));
-		a.addFilmActor(3);
-		dao.save(a);
-		// Recarga
-		a = dao.getById(newId);
-		System.out.println(a);
-		a.getFilmActors().forEach(item -> System.out.println(item.getFilm().getTitle()));
-
-		System.out.println("Delete <-----------------------");
-		dao.deleteById(newId);
-		if(dao.findById(newId).isEmpty())
-			System.out.println("Ya no está");
-		else
-			System.out.println("ERROR: no se ha borrado");
-
-		System.out.println("Fin CRUD <-----------------------");
-	}
+//	@Transactional
+//	private void crud() {
+//		System.out.println("Create <-----------------------");
+//		var a = new Actor("Pepito", "Grillo");
+//		dao.save(a);
+//		System.out.println(a);
+//		a.addFilmActor(1);
+//		a.addFilmActor(2);
+//		a.addFilmActor(14);
+//		dao.save(a);
+//
+//		System.out.println("Read <-----------------------");
+//		var newId = a.getActorId();
+//		a = dao.getById(newId);
+//		System.out.println(a);
+//		a.getFilmActors().forEach(item -> System.out.println(item.getFilm().getTitle()));
+//
+//		System.out.println("Update <-----------------------");
+//		a.setFirstName(a.getFirstName().toUpperCase());
+//		a.removeFilmActor(a.getFilmActors().get(1));
+//		a.addFilmActor(3);
+//		dao.save(a);
+//		// Recarga
+//		a = dao.getById(newId);
+//		System.out.println(a);
+//		a.getFilmActors().forEach(item -> System.out.println(item.getFilm().getTitle()));
+//
+//		System.out.println("Delete <-----------------------");
+//		dao.deleteById(newId);
+//		if(dao.findById(newId).isEmpty())
+//			System.out.println("Ya no está");
+//		else
+//			System.out.println("ERROR: no se ha borrado");
+//
+//		System.out.println("Fin CRUD <-----------------------");
+//	}
 
 }

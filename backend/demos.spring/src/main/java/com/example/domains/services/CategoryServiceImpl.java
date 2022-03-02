@@ -12,7 +12,7 @@ import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 	private CategoryRepository dao;
 	
 	public CategoryServiceImpl(CategoryRepository dao) {
@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> getAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public Category getOne(Integer id) throws NotFoundException {
 		var item = dao.findById(id);
@@ -63,5 +63,4 @@ public class CategoryServiceImpl implements CategoryService{
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}
-
 }

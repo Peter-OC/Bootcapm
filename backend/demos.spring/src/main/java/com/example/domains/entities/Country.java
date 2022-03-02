@@ -34,51 +34,28 @@ public class Country extends EntityBase<Country> implements Serializable {
 	@NotBlank
 	@Length(max = 50)
 	private String country;
-	
+
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
 	private Timestamp lastUpdate;
-	
-	//bi-directional many-to-one association to FilmCategory
-		@OneToMany(mappedBy="country")
-		@JsonIgnore
-		private List<City> cities;
-		
-	public Country(int countryId, @NotBlank @Length(max = 50) String country, Timestamp lastUpdate, List<City> cities) {
-		super();
-		this.countryId = countryId;
-		this.country = country;
-		this.lastUpdate = lastUpdate;
-		this.cities = cities;
+
+	//bi-directional many-to-one association to City
+	@OneToMany(mappedBy="country")
+	@JsonIgnore
+	private List<City> cities;
+
+	public Country() {
 	}
-	
+
 	public Country(int countryId) {
 		super();
 		this.countryId = countryId;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(countryId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!(obj instanceof Country))
-			return false;
-		Country other = (Country) obj;
-		return countryId == other.countryId;
-	}	
-
-	@Override
-	public String toString() {
-		return "Country [countryId=" + countryId + ", country=" + country + ", lastUpdate=" + lastUpdate + ", cities="
-				+ cities + "]";
-	}
-
-	public Country() {
+	public Country(int countryId, @NotBlank @Length(max = 50) String country) {
+		super();
+		this.countryId = countryId;
+		this.country = country;
 	}
 
 	public int getCountryId() {
@@ -125,6 +102,26 @@ public class Country extends EntityBase<Country> implements Serializable {
 		city.setCountry(null);
 
 		return city;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(countryId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Country))
+			return false;
+		Country other = (Country) obj;
+		return countryId == other.countryId;
+	}
+
+	@Override
+	public String toString() {
+		return "Country [countryId=" + countryId + ", country=" + country + ", lastUpdate=" + lastUpdate + "]";
 	}
 
 }

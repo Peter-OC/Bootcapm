@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.entities.EntityBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -30,13 +31,14 @@ public class Category extends EntityBase<Category> implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="category_id")
-	@JsonProperty
+	@JsonProperty("id")
 	private int categoryId;
 
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
-	
+
 	@NotBlank
 	@Length(max = 25)
 	@JsonProperty("categoria")
@@ -46,13 +48,8 @@ public class Category extends EntityBase<Category> implements Serializable {
 	@OneToMany(mappedBy="category")
 	@JsonIgnore
 	private List<FilmCategory> filmCategories;
-	
-	public Category(int categoryId, Timestamp lastUpdate, String name, List<FilmCategory> filmCategories) {
-		super();
-		this.categoryId = categoryId;
-		this.lastUpdate = lastUpdate;
-		this.name = name;
-		this.filmCategories = filmCategories;
+
+	public Category() {
 	}
 
 	public Category(int categoryId) {
@@ -60,7 +57,10 @@ public class Category extends EntityBase<Category> implements Serializable {
 		this.categoryId = categoryId;
 	}
 
-	public Category() {
+	public Category(int categoryId, String name) {
+		super();
+		this.categoryId = categoryId;
+		this.name = name;
 	}
 
 	public int getCategoryId() {
@@ -124,11 +124,5 @@ public class Category extends EntityBase<Category> implements Serializable {
 		return categoryId == other.categoryId;
 	}
 
-	@Override
-	public String toString() {
-		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
-	}
 	
-	
-
 }

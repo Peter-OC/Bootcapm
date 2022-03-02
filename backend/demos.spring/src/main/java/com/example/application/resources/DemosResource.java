@@ -16,10 +16,10 @@ import com.example.application.dtos.ActorDTO;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
-@RestController //Avisa que es esto es un controlador de tipo rest
+@RestController
 @RequestMapping(path = "/demos")
 public class DemosResource {
-
+	// http://localhost:8001/demos/params/1111?nom=mundo&page=5
 	@GetMapping(path = "/params/{id}", params = "nom")
 	public String cotilla(
 	        @PathVariable String id,
