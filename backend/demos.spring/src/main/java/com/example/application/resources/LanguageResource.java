@@ -32,7 +32,7 @@ import com.example.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 
 @RestController
-@RequestMapping("/api/idiomas")//No olvidar cambiar la direccion
+@RequestMapping("/api/language")//No olvidar cambiar la direccion
 public class LanguageResource {
 	@Autowired
 	private LanguageService srv;
