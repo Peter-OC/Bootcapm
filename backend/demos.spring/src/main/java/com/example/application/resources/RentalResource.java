@@ -124,4 +124,5 @@ public class RentalResource {
 	public void delete(@PathVariable int id) {
 		srv.deleteById(id);
 	}
+
 }
