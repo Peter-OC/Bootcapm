@@ -8,7 +8,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.example.domains.entities.Actor;
 import com.example.domains.entities.Language;
 
 @RepositoryRestResource(exported = false)

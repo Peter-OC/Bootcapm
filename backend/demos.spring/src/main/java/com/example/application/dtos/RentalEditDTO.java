@@ -3,23 +3,11 @@ package com.example.application.dtos;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.Valid;
-
 import org.springframework.lang.NonNull;
 
-import com.example.domains.entities.Actor;
-import com.example.domains.entities.Category;
 import com.example.domains.entities.Customer;
 import com.example.domains.entities.Rental;
 import com.example.domains.entities.Inventory;
-import com.example.domains.entities.Language;
 import com.example.domains.entities.Payment;
 import com.example.domains.entities.Staff;
 import com.fasterxml.jackson.annotation.JsonFormat;

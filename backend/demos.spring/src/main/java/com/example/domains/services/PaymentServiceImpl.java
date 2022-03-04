@@ -8,9 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.domains.contracts.repositories.PaymentRepository;
-import com.example.domains.contracts.repositories.RentalRepository;
 import com.example.domains.contracts.services.PaymentService;
-import com.example.domains.contracts.services.RentalService;
 import com.example.domains.entities.Payment;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;

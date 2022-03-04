@@ -1,6 +1,5 @@
 package com.example.application.dtos;
 
-import com.example.domains.entities.Country;
 import com.example.domains.entities.Language;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

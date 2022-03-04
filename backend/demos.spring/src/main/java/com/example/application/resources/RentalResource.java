@@ -23,15 +23,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.application.dtos.PeliculaDetailsDTO;
-import com.example.application.dtos.PeliculaEditDTO;
-import com.example.application.dtos.PeliculaShortDTO;
 import com.example.application.dtos.RentalDetailsDTO;
 import com.example.application.dtos.RentalEditDTO;
 import com.example.application.dtos.RentalShortDTO;
-import com.example.domains.contracts.services.PeliculasService;
 import com.example.domains.contracts.services.RentalService;
-import com.example.domains.entities.Rental;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
