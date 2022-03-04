@@ -81,14 +81,14 @@ public class RentalEditDTO {
 		
 	//ENTITY(1,3,5)
 	//DTO(1,7)
-			// Borra los actores que sobran
+			// Borra los alquileres que sobran
 			var delAlquiladas = target.getPayments().stream()
 					.filter(item -> !payments.contains(item.getPaymentId()))
 					.toList();
 			delAlquiladas.forEach(item -> target.removePayment(item));
-//			// Añade los actores que falta
+//			// Añade los alquileres que falta
 			payments.stream()
-				.filter(idPaymentDTO -> !target.getPayments().stream().anyMatch(filmActor -> filmActor.getPaymentId() == idPaymentDTO))
+				.filter(idPaymentDTO -> !target.getPayments().stream().anyMatch(alquiler -> alquiler.getPaymentId() == idPaymentDTO))
 				.forEach(idPaymentDTO -> target.addPayment(new Payment(idPaymentDTO)));
 
 //	// Borra las categorias que sobran
