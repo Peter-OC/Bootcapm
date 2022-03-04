@@ -3,6 +3,10 @@ package com.example.application.dtos;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.NonNull;
 
 import com.example.domains.entities.Customer;
@@ -13,26 +17,41 @@ import com.example.domains.entities.Staff;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Value;
 
 @Value @Data
-public class RentalEditDTO {
+@ApiModel(value = "Alquiler editable", description = "Version editable del alquiler.")
 
+public class RentalEditDTO {
+	@NotBlank
+	@Length(max = 10)
 	@JsonProperty("id")
+	@ApiModelProperty(value = "Identificador del alquiler.")
 	private int rentalId;
 	@JsonProperty("cliente")
 	@NonNull
+	@Positive
+	@ApiModelProperty(value = "Identificador cliente.")
 	private int customer;
 	@JsonProperty("pelicula")
 	@NonNull
+	@Positive
+	@ApiModelProperty(value = "Identificador del inventario.")
 	private int inventory;
 	@NonNull
+	@Positive
+	@ApiModelProperty(value = "Identificador de empleados.")
 	private int empleado;//staff
+	@ApiModelProperty(value = "Fecha de alquiler")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date rentalDate;
+	@ApiModelProperty(value = "Fecha de devolución")
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date returnDate;	
+	@ApiModelProperty(value = "Lista de identificadores de alquileres.")
 	private List<PaymentEditDTO> payments;
 	
 

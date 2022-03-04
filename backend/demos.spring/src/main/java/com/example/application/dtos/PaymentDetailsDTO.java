@@ -13,7 +13,7 @@ import lombok.Value;
 public class PaymentDetailsDTO {
 	
 	@JsonProperty("id")
-	private int paymentlId;
+	private int paymentId;
 	@JsonProperty("Empleado")
 	private String empleado;
 	@JsonProperty("total")
