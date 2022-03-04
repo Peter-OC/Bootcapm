@@ -50,7 +50,7 @@ public class RentalEditDTO {
 				source.getInventory().getInventoryId(),
 				source.getStaff().getStaffId(),
 				source.getRentalDate(),
-				source.getReturnDate(),
+				source.getReturnDate() == null ? null : source.getReturnDate(),
 				null
 				); 
 	}
@@ -59,7 +59,7 @@ public class RentalEditDTO {
 		return new Rental(
 				source.getRentalId(),
 				source.getRentalDate(),
-				source.getReturnDate(),
+				source.getReturnDate() == null ? null : source.getReturnDate(),
 				null,
 				new Customer(source.getCustomer()),
 				new Inventory(source.getInventory()),
@@ -79,8 +79,6 @@ public class RentalEditDTO {
 			target.setStaff(new Staff(empleado));
 		
 		
-	//ENTITY(1,3,5)
-	//DTO(1,7)
 			// Borra los alquileres que sobran
 			var delAlquiladas = target.getPayments().stream()
 					.filter(item -> !payments.contains(item.getPaymentId()))
