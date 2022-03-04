@@ -84,12 +84,12 @@ public class Rental extends EntityBase<Rental> implements Serializable {
 	}
 
 	public Rental(int rentalId, Date rentalDate, Date returnDate,
-			@Valid List<Payment> payments, Customer customer, Inventory inventory, Staff staff) {
+			Customer customer, Inventory inventory, Staff staff) {
 		super();
 		this.rentalId = rentalId;
 		this.rentalDate = rentalDate;
 		this.returnDate = returnDate;
-		this.payments = payments;
+		//this.payments = payments;
 		this.customer = customer;
 		this.inventory = inventory;
 		this.staff = staff;

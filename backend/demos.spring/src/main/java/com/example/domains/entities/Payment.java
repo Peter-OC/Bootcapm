@@ -3,6 +3,9 @@ package com.example.domains.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.annotations.Generated;
@@ -32,32 +35,38 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 	@Column(name="payment_id")
 	private int paymentId;
 
+	@NotNull
+	@DecimalMin(value = "0.0", inclusive = false)
+	@Digits(integer = 5, fraction = 2)
 	private BigDecimal amount;
 
 	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
-	@PastOrPresent
 	@JsonFormat(pattern = " yyyy-MM-dd hh:mm:ss")
 	private Timestamp lastUpdate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="payment_date")
+	@PastOrPresent
+	@NotNull
 	private Date paymentDate;
 
 	//bi-directional many-to-one association to Customer
 	@ManyToOne
 	@JoinColumn(name="customer_id")
+	@NotNull
 	private Customer customer;
 
 	//bi-directional many-to-one association to Rental
 	@ManyToOne
 	@JoinColumn(name="rental_id")
-	@Valid
+	@NotNull
 	private Rental rental;
 
 	//bi-directional many-to-one association to Staff
 	@ManyToOne
 	@JoinColumn(name="staff_id")
+	@NotNull
 	private Staff staff;
 
 	public Payment() {
@@ -85,6 +94,22 @@ public class Payment extends EntityBase<Payment> implements Serializable {
 		this.customer = customer;
 		this.rental = rental;
 		this.staff = staff;
+	}
+
+	public Payment(int paymentId,
+			@NotNull @DecimalMin(value = "0.0", inclusive = false) @Digits(integer = 5, fraction = 2) BigDecimal amount,
+			@PastOrPresent @NotNull Date paymentDate, @NotNull Staff staff, @NotNull Rental rental ) {
+		super();
+		this.paymentId = paymentId;
+		this.amount = amount;
+		this.paymentDate = paymentDate;
+		this.staff = staff;
+		this.rental = rental;
+		
+		if(rental != null) {
+			this.customer = rental.getCustomer();
+		}
+		
 	}
 
 	@Override

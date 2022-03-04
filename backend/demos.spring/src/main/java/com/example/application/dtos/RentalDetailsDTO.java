@@ -36,7 +36,7 @@ public class RentalDetailsDTO {
 	private Date rentalDate;
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date returnDate;	
-	private List<Integer> payments;
+	private List<PaymentDetailsDTO> payments;
 	
 
 	public static RentalDetailsDTO from(Rental source) {
@@ -47,7 +47,7 @@ public class RentalDetailsDTO {
 				source.getStaff().getFirstName() + " " + source.getStaff().getLastName(),
 				source.getRentalDate(),
 				source.getReturnDate(),
-				null
+				source.getPayments().stream().map(pago -> PaymentDetailsDTO.from(pago)).toList()
 				);
 	}
 	
