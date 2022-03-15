@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul>
+        <li><a href="/MenuPizza/index.html">INICIO</a></li>
+        <li><a>MENU</a></li>
+        <li><a href="/MenuPizza/contacto.html">CONTACTO</a></li>
+        <a class = "img-user"><img src="img/carrito.png" style="width: 35px;"><img src="img/user.png" style="width: 35px;"></a>
+    </ul>
+<div class="texto-form">
+    <h2>Formulario de contacto</h2>
+    <p>Resize the browser window to see the effect. When the screen is less than 600px wide, 
+        make the two columns stack on top of each other instead of next to each other.</p>
+</div>
+<div class="container">
+  <form action="/action_page.php">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Nombre</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="firstname" placeholder="Nombre..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Apellidos</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="lastname" placeholder="Apellidos..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="country">Ciudad</label>
+    </div>
+    <div class="col-75">
+      <select id="country" name="country">
+        <option value="australia">Murcia</option>
+        <option value="canada">Galícia</option>
+        <option value="usa">Madrid</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">Comentario</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="subject" placeholder="Escribe un comentario.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
