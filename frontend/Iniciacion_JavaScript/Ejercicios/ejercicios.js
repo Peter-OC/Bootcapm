@@ -33,26 +33,43 @@ function adivinaElNumero(){
 }
 
 // Ejercicio 3
+function dameArray(elementos, valor){
+    let miarray = [];
+    for (let i = 0; i < elementos; i++){
+        miarray[i] = valor;
+    }
+    return miarray; 
+}
 
+// Ejercicio 5
+function validaNIF(num){
+    if (num == null) return true;
+    num = num.toUpperCase();
+
+    if (!/^\d{1,8}[A-Za-z]$/.test(num)) return false;
+    return "TRWAGMYFPDXBNJZSQVHLCKE".charAt(parseInt( num.substring(0, num.length - 1)) % 23) 
+            == num.charAt(num.length - 1);
+}
 
 // Ejercicio 4
-function numerosPrimos() {
+function numerosDivisores(num) {
 
-    let num;
-    let primos = [];
-    let noPrimos = [];
+    let divisores = [];
 
-    num = prompt("¿Cuantos números primos quieres mostrar?", '');
+    num = parseInt(num);
   
     for (let i = 0; i < num; i++) {
-      if (i%2 === 0) {
-        primos.push(i);
-      } else {
-        noPrimos.push(i);
-      }
+      if (num%i === 0) {
+        divisores.push(i);
+      } 
     } 
-    console.log(primos); 
-    alert(primos);
+    return divisores;
   }
   
+// Ejercicio 6
+function palindromo(cadena) {
+
+    const cadenaInvertida = cadena.split("").reverse().join("");
   
+    return cadenaInvertida === cadena ? "es palindromo" : "no es palindromo";   
+  }
