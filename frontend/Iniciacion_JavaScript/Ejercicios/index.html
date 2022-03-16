@@ -28,14 +28,19 @@
 
 <!-- Ejercicio 4 -->
 <script>
-    let num = prompt("¿De que numero quieres sus divisores?", '');
-    console.log(numerosDivisores(num));
+    // let num = prompt("¿De que numero quieres sus divisores?", '');
+    // console.log(numerosDivisores(num));
 </script>
+
+<!-- Ejercicio 4 de números primos-->
+<script>
+    // console.log(damePrimos(+prompt("dime cuantos números quieres:")))
+</script> 
 
 <!-- Ejercicio 5 -->
 <script>
-    let dni = prompt("Introduce tu DNI", '');
-    console.log(validaNIF(dni));
+    // let dni = prompt("Introduce tu DNI", '');
+    // console.log(validaNIF(dni));
 </script>
     
 <!-- Ejercicio 6 -->
@@ -45,6 +50,21 @@
     // alert(palindromo(cadena));
 </script>
 
+<!-- OBJETOS -->
+<!-- Ejercicio 1 Adivina el Número -->
+<script>
+
+    let juego = new juegoDelNumero;
+    let num; 
+
+    do { 
+        num = parseInt(prompt("Escribe un numero del 0 al 100", ''));    
+        juego.jugada(num)
+        alert(juego.getMessage())
+        contador --;
+    } while (!juego.getTerminado());
+
+</script>
 
 
 </body>

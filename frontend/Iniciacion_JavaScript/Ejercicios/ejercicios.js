@@ -41,16 +41,6 @@ function dameArray(elementos, valor){
     return miarray; 
 }
 
-// Ejercicio 5
-function validaNIF(num){
-    if (num == null) return true;
-    num = num.toUpperCase();
-
-    if (!/^\d{1,8}[A-Za-z]$/.test(num)) return false;
-    return "TRWAGMYFPDXBNJZSQVHLCKE".charAt(parseInt( num.substring(0, num.length - 1)) % 23) 
-            == num.charAt(num.length - 1);
-}
-
 // Ejercicio 4
 function numerosDivisores(num) {
 
@@ -66,6 +56,37 @@ function numerosDivisores(num) {
     return divisores;
   }
   
+// Ejercicio 4 de los números primos (^_^)
+function esPrimo(numero) {
+    for (let i = 2; i < numero ; i++) {
+        if (numero % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function damePrimos(cuantos) {
+    let primos = [];
+    for (let x = 2; x; x++) {
+      if (esPrimo(x)) {
+        primos.push(x);
+        if (primos.length >= cuantos) return primos;
+      }
+    }
+  }
+
+
+// Ejercicio 5
+function validaNIF(num){
+    if (num == null) return true;
+    num = num.toUpperCase();
+
+    if (!/^\d{1,8}[A-Za-z]$/.test(num)) return false;
+    return "TRWAGMYFPDXBNJZSQVHLCKE".charAt(parseInt( num.substring(0, num.length - 1)) % 23) 
+            == num.charAt(num.length - 1);
+}
+
 // Ejercicio 6
 function palindromo(cadena) {
 
@@ -73,3 +94,47 @@ function palindromo(cadena) {
   
     return cadenaInvertida === cadena ? "es palindromo" : "no es palindromo";   
   }
+
+// Ejercicio 1 de Objetos
+class juegoDelNumero{
+    constructor(){
+        this.inicializar();
+    }
+
+    inicializar(){
+        this.cont = 10;
+		this.random = rnd.nextInt(101);
+		this.mensaje = "";
+		this.terminado = false;
+    }
+
+    jugada(num){
+        if (num > this.random) {
+			this.mensaje = "El número secreto es MENOR que " + num + " ,\n" + "te quedan " + (this.cont - 1) + " intentos.\n";
+		} else if (num < this.random) {
+			this.mensaje = "El número secreto es MAYOR que " + num + " ,\n" + "te quedan " + (this.cont - 1) + " intentos.\n";
+		} else {
+			this.mensaje = "¡CORRECTO!" + " Solo has necesitado " + (10 - (this.cont - 1)) + " intentos.";
+
+			this.terminado = true;
+			return;
+		}
+		this.cont--;
+
+		if (this.cont == 0) {
+			this.mensaje = "¡HAS PERDIDO!," + " ¡ERES MÁS MALO QUE LA PESTE!. El número secreto era: " + num;
+
+			this.terminado = true;
+		}
+	}
+    
+    getMessage() {
+		return this.mensaje;
+	}
+    
+    getTerminado() {
+		return this.terminado;
+	}
+
+
+}
