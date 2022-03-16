@@ -13,7 +13,7 @@ function adivinaElNumero(){
     numRandom = random();
 
     do { 
-        num = prompt("Escribe un numero del 0 al 100", 'HOLA');    
+        num = prompt("Escribe un numero del 0 al 100", '');    
         
         if (num > numRandom){
             alert("El número es menor!");
@@ -31,3 +31,28 @@ function adivinaElNumero(){
         alert("¡HAS PERDIDO!");
     } 
 }
+
+// Ejercicio 3
+
+
+// Ejercicio 4
+function numerosPrimos() {
+
+    let num;
+    let primos = [];
+    let noPrimos = [];
+
+    num = prompt("¿Cuantos números primos quieres mostrar?", '');
+  
+    for (let i = 0; i < num; i++) {
+      if (i%2 === 0) {
+        primos.push(i);
+      } else {
+        noPrimos.push(i);
+      }
+    } 
+    console.log(primos); 
+    alert(primos);
+  }
+  
+  
