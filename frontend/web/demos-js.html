@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demos JS</title>
+</head>
+
+<body>
+    <h1>Demos JS</h1>
+    <script src="js/uno.js"></script>
+    <script src="js/dos.js"></script>
+    <!-- <script>
+        let v = window;
+        // var a = 3;
+        // var b = "2";
+        // c = a + b;
+        // console.log(c);
+        // c = a * b;
+        // console.log(c);
+        // b = 2;
+        // c = a + b;
+        // console.log(c);
+
+        // function kk() {
+        //     var x = 1;
+        //     if (true) {
+        //        var y = 1;
+        //     }
+        //     c = x + y;
+        //     return c;
+        // }
+        // if (kk() === c) {
+        //     console.log("Idénticos")
+        // }
+
+        // t = [10, 20, 30]
+        // o = { x : 10, yy: 20 }
+        // o['x'] = o.x;
+        // with (t) {
+        //     x = y + 2;
+        // }
+        // for (var i in t) {
+        //     console.log(i)
+        // }
+        // for (var i of t) {
+        //     console.log(i)
+        // }
+        function avg() {
+            var rslt = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                rslt += arguments[i];
+            }
+            return arguments.length ? (rslt / arguments.length) : 0;
+        }
+
+        // function suma(a, b) {
+        //     return a + b;
+        // }
+        // console.log(suma(2, 2))
+        // suma = function (a, b) {
+        //     return a + b;
+        // }
+        // // console.log(suma(2, 2))
+        // //suma = 5;
+        // // // console.log(suma)
+        // // function suma(a, b) {
+        // //     return a / b;
+        // // }
+        // suma = function (a, b) {
+        //     return a - b;
+        // }
+        // suma = (a,b) => a + b;
+        // otra = (a,b) => suma(a + b) * 2;
+        pinta = str => console.log(str);
+       
+        // if (typeof (suma) === "function") {
+        //     console.log(suma(2, 2))
+        //     console.log(suma(2, 2, 4))
+        //     console.log(suma(2))
+        // }
+        // console.log(suma)
+        // console.log(avg(1, 2))
+        // console.log(avg(1, 2, 3, 4))
+        // choca(44);
+        // console.log(pinta(avg(1, 2, 3, 4)))
+
+        // (function() {
+        //     let mia = 5;
+        //     // ...
+        // })()
+
+        t = [];
+        t[0] = 10;
+        t[1] = "Cadena";
+        t[7] = 80;
+        t[3] =  str => console.log(str)
+        for (var i in t) {
+            console.log(i)
+        }
+        for (var i of t) {
+            console.log(i)
+        }
+        t[3]('Hola mundo')
+        t.splice(3)
+        for (var i in t) {
+            console.log(i)
+        }
+        for (var i of t) {
+            console.log(i)
+        }
+        o = { x: 10, y: 20, suma: (x, y) => x + y }
+        console.log(o, o.x, o.y, o.suma(2, 3))
+        o.z = 30;
+        cmp = 'z'
+        o[cmp] = 50;
+        o.cmp = 70;
+        o.suma(2, 3);
+        o.suma = 10;
+        console.log(o)
+        // delete o.x
+        // console.log(o)
+
+        function Punto(x, y) {
+            this.x = x;
+            this.y = y;
+            this.suma = function() { return this.x + this.y; };
+        }
+
+        class PuntoConClase {
+            constructor(x, y) {
+                this._x = x;
+                this.y = y;
+            }
+            suma() {
+                return this._x + this.y;
+            }
+
+            get X() { return this._x; }
+            set X(valor) {
+                if(valor < 0)
+                    throw new Error('No puede ser negativo')
+                this._x = valor
+            }
+        }
+
+        pinta(typeof(Punto))
+        pinta('--------- >' + typeof(PuntoConClase))
+        let p5 = new PuntoConClase(3, 3)
+        if(p5.X == 5) {
+            p5.X = -1;
+        }
+        if(p5.x == 5) {
+            p5.x = -1;
+        }
+        pinta(p5)
+        Punto.prototype.saluda =  () => console.log('Soy un punto');
+        Punto.prototype.cont =  0;
+        function Punto3D(x, y, z) {
+            let vm = this;
+            let privado = 3;
+            vm.x = x;
+            vm.y = y;
+            vm.z = 0;
+            vm.suma = () => vm.x + vm.y + vm.z;
+            vm.dame = () => privado;
+            vm.pon = valor => {
+                if(valor != privado) {
+                    privado = valor;
+                }
+            }
+        }
+        Punto3D.prototype = Object.assign({}, Punto.prototype);
+        Punto3D.prototype.algo = () => console.log('Soy algo');
+        let p1 = new Punto(10, 20);
+        let p2 = new Punto(20, 50);
+        // p1.pon(3);
+        // pinta(p1.dame())
+        // p1.KK = p2;
+        // p1.kk.z=4;
+        // p2.suma = function() { return this.x - this.y; }
+        // delete p2.z;
+        
+        console.log(p1, p2)
+        console.log(p1.suma())
+        console.log(p2.suma())
+        p2.suma.bind(p1)
+        console.log(p2.suma())
+        //console.log(p2.suma.call(p1))
+
+        // p1.saluda()
+        // // p2.saluda =  () => console.log('Soy otro método');
+        // p2.saluda()
+        // Punto.prototype.saluda =  () => console.log('Adioooos');
+        // p1.saluda()
+        // // p2.saluda =  () => console.log('Soy otro método');
+        // p2.saluda()
+        // let p3 = new Punto3D(20, "cadena", 4);
+        // p3.saluda()
+        // p3.algo()
+        // p1.algo()
+ 
+        function cotilla() {
+            this.valor = 'ejemplo';
+
+        }
+
+        pinta(this)
+        cotilla();
+        pinta(valor);
+        pinta(this)
+        let demo = { fijo: 0 }
+        cotilla.call(demo);
+        pinta(demo);
+        cotilla.call(p1);
+        pinta(p1);
+        // Punto(666, 20);
+        // pinta(x)
+        pinta(new cotilla())
+
+        let x = 4, y = 5;
+        let punto = { x: x, y: y};
+        punto = { x, y};
+    </script> -->
+
+    <script type="module">
+        // import * as m1 from './js/modulo1.js';
+        // import * as m2 from './js/modulo2.js';
+
+        // m1.choca()
+        // console.log(m1.suma(2, 2))
+        // m2.choca()
+        // console.log(m2.suma(2, 2))
+
+        import { choca } from './js/modulo2.js';
+        // import { choca as choca2 } from './js/modulo2.js';
+        import { miChoca } from './js/modulo1.js';
+        choca()
+        miChoca()
+
+        // int[] tab = new int[10];
+
+        // let tab = new Array(); // []
+        // tab[4] = 0;// [undefined, undefined, undefined, undefined, 0]
+        // tab = dameArray(10, 'algo'); // [0,0,0,0,0,0,0,0,0]
+        // function dameArray(elementos, defecto = 0) {
+
+        // }
+
+        var o = new Object(); // {}
+        o.id = 1;
+        o.nombre = 'pepito';
+        o.apellidos = 'Grillo';
+        o.getNombreCompleto = function () { return `${this.nombre} ${this.apellidos}` }
+        var o2 = new Object(); // {}
+        o2.id = 3;
+        o2.nombre = 'Capitan';
+        o2.apellidos = 'Tan';
+        o2.getNombreCompleto = function () { return `${this.nombre} ${this.apellidos}` }
+
+        function Persona(id, nombre, apellidos) {
+            this.id = id;
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            //this.getNombreCompleto = function () { return `${this.nombre} ${this.apellidos}` }
+        }
+        Persona.prototype.getNombreCompleto = function () { return `${this.nombre} ${this.apellidos}` }
+
+        class PersonaConClase {
+            constructor(id, nombre, apellidos) {
+                this.id = id;
+                this.nombre = nombre;
+                this.apellidos = apellidos;
+            }
+            getNombreCompleto() { return `${this.nombre} ${this.apellidos}` }
+        }
+        
+        var o3 = new Persona(2, 'Carmelo', 'Coton')
+        o3.nombre = null;
+
+
+    </script>
+</body>
+
+</html>

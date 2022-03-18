@@ -103,7 +103,7 @@ class juegoDelNumero{
 
     inicializar(){
         this.cont = 10;
-		this.random = rnd.nextInt(101);
+		this.random = this.rnd.nextInt(101);
 		this.mensaje = "";
 		this.terminado = false;
     }
