@@ -7,15 +7,16 @@
     <title>Calculadora</title>
     <link rel="stylesheet" href="font/digital-7.ttf">
     <link rel="stylesheet" href="calculator.css">
+    
 </head>
 <body>
     <div class="container">
         <div class="calculator">
             <div class="display">
-                <div id="previous-value">0</div>
-                <div id="current-value">0</div>
+                <div class="previous-value"></div><!--Mirar la clase en css-->
+                <div class="current-value"></div>
             </div>
-            <button class="col-2 C">C</button>
+            <button class="col-2 C" onclick="calculadora.deleteAll()">C</button>
             <button class="del">
                 <img src="img/del.svg"
                      alt="DEL"
@@ -40,9 +41,57 @@
             <button class="operador">=</button>
         </div>
     </div>
-    <script src="calculator.js" type="text/javascript"></script>
+    <script src="calculadora.js"></script>
     <script>
+        let displayPreviousValue = document.querySelector('.previous-value');
+        let displayCurrentValue = document.querySelector('.current-value');
+        let numerosButton = document.querySelectorAll('.numero');
+        let operadoresButton = document.querySelectorAll('.operador');
+        let buttonDeleteOne = document.querySelector('.del');
+        let buttonDeleteAll = document.querySelector('.C');
+
+        let calculadora = new Calculadora(displayPreviousValue, displayCurrentValue);
+
+        displayCurrentValue.textContent = '0';
+
+        function mostrarNumeroActual() {
+            numerosButton.forEach((btn) => {
+            btn.addEventListener("click", () => {
+            calculadora.addNumero(btn.textContent);
+          });
+        });
+      }
+
+      mostrarNumeroActual();
+
+      function mostrarOperador() {
+        operadoresButton.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            calculadora.copiarValor();
+            calculadora.valorAnterior(btn.textContent); 
+            calculadora.deleteCurrentDisplay();
+          });
+        });
+      }
+      mostrarOperador();
+
+      function deleteAll() {
+        buttonDeleteAll.addEventListener("click", () => {
+          calculadora.deleteAll();
+        });
+      }
+
+      deleteAll();
+
+      function deleteOne() {
+        buttonDeleteOne.addEventListener("click", () => {
+          calculadora.deleteOne();
+        });
+      }
+
+      deleteOne();
 
     </script>
+
 </body>
 </html>
