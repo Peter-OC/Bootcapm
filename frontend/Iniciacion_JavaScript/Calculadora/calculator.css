@@ -55,7 +55,7 @@ button:focus{
     text-align: right;
     justify-content: space-between;
     word-break: break-all;
-    box-shadow: inset 2px 2px 2px 3px #00000033;  
+    box-shadow: inset 2px 2px 2px 3px #00000033; 
 }
 
 .current-value {
