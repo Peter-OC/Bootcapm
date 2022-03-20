@@ -9,7 +9,7 @@ class Calculadora {
     
     inicializa() {
         this.acumulado = 0;
-        this.operadorPendiente = '+';
+        this.operadorPendiente = '+'; 
     }
     
     get ACUMULADO() {
