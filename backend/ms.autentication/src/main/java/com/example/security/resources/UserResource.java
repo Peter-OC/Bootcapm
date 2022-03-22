@@ -50,7 +50,7 @@ public class UserResource {
 				AuthorityUtils.createAuthorityList("ROLE_USER")	;	
 		String token = Jwts.builder()
 				.setId("MicroserviciosJWT")
-				.setSubject(username)
+				.setSubject(username)//Aqui user get.y lo que usemos de nombre de usuario
 				.claim("authorities",
 					grantedAuthorities.stream()
 						.map(GrantedAuthority::getAuthority)
@@ -62,3 +62,10 @@ public class UserResource {
 		return "Bearer " + token;
 	}
 }
+
+/*
+ * /register (anonimo)
+ * /Changepassword
+ * /profile (Autentication) (get, put) modificar sus datos menos la contraseña
+ * /users (Admin)  (get, getAll, post, put, delete) + roles 
+*/
