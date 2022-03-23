@@ -19,7 +19,7 @@ import { DemosComponent } from './demos/demos.component';
   imports: [
     BrowserModule, FormsModule,
     AppRoutingModule, MainModule, SecurityModule, MyCoreModule,
-    CommonServicesModule, MainModule,
+    CommonServicesModule,
   ],
   providers: [
     LoggerService,
