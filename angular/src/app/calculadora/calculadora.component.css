@@ -45,9 +45,9 @@ button:focus{
 
 .display {
   grid-column: span 4;
-  padding: 16px;
+  padding: 10px;
   display: flex;
-  margin: 10px 10px 20px;
+  margin: 10px 10px 15px;
   flex-direction: column;
   align-items: flex-end;
   background-color: #949494;

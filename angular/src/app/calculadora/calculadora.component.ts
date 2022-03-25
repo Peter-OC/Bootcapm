@@ -61,7 +61,7 @@ export class CalculadoraComponent implements OnInit {
         return this.ACUMULADO;
     }
 
-    addNumero(value: string) {
+    addNumero(value: string,) {
         if((this.displayCurrentValue == "0")){
             this.displayCurrentValue = value;
         } else {
