@@ -1,3 +1,3 @@
-![Calculadora](https://raw.githubusercontent.com/Peter-OC/Bootcapm/angular/src/assets/images/calculator.png)
+![Calculadora](https://raw.githubusercontent.com/Peter-OC/Bootcapm/master/angular/src/assets/images/calculator.png)
 
 
