@@ -12,17 +12,19 @@ import { DemosComponent } from './demos/demos.component';
 import { CommonServicesModule } from './common-services';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
+import { ContactosModule } from './contactos';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
     DinamicoComponent,
-    CalculadoraComponent
+    CalculadoraComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
     AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
+    ContactosModule,
   ],
   providers: [
     LoggerService,
