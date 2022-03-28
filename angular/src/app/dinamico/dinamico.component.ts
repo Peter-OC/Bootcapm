@@ -12,11 +12,11 @@ import { HomeComponent } from '../main/home/home.component';
 })
 export class DinamicoComponent implements OnInit {
   menu = [
-    { texto: 'calculadora', icono: 'fa-solid fa-chalkboard-user', componente: CalculadoraComponent},
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
-    { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
-    { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent},
-    { texto: 'contactos', icono: 'fa-solid fa-chalkboard-user', componente: ContactosComponent},
+    { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
+    { texto: 'demos', icono: 'fa-solid fa-laptop-code', componente: DemosComponent},
+    { texto: 'formulario', icono: 'fa-solid fa-table-list', componente: FormularioComponent},
+    { texto: 'contactos', icono: 'fa-solid fa-user', componente: ContactosComponent},
   ]
   actual = this.menu[0].componente
 

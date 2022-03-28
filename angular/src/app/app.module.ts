@@ -14,6 +14,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosModule } from './contactos';
 import { FormularioComponent } from './formulario/formulario.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,14 +25,20 @@ import { FormularioComponent } from './formulario/formulario.component';
     FormularioComponent,
   ],
   imports: [
-    BrowserModule, FormsModule,
-    AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    MainModule,
+    SecurityModule,
+    MyCoreModule,
+    CommonServicesModule,
     ContactosModule,
+    HttpClientModule,
   ],
   providers: [
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

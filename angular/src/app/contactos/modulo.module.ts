@@ -6,16 +6,15 @@ import { MyCoreModule } from 'src/lib/my-core';
 import { CommonServicesModule } from '../common-services';
 import { CONTACTOS_COMPONENTES } from './componente.component';
 
-
-
 @NgModule({
-  declarations: [
-    CONTACTOS_COMPONENTES,
-  ],
+  declarations: [CONTACTOS_COMPONENTES],
   imports: [
-    CommonModule, FormsModule, RouterModule.forChild([]),
-    MyCoreModule, CommonServicesModule,
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild([]),
+    MyCoreModule,
+    CommonServicesModule,
   ],
   exports: [CONTACTOS_COMPONENTES],
 })
-export class ContactosModule { }
+export class ContactosModule {}
