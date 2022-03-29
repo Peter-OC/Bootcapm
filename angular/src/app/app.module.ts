@@ -15,6 +15,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosModule } from './contactos';
 import { FormularioComponent } from './formulario/formulario.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormButtonsComponent } from './common-component/form-buttons/form-buttons.component';
 
 @NgModule({
   declarations: [
