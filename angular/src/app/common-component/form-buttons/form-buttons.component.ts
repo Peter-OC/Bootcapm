@@ -18,3 +18,4 @@ export class FormButtonsComponent {
   get hasCancel(): boolean { return this.cancel.observed; }
   get hasDelete(): boolean { return this.delete.observed; }
 }
+

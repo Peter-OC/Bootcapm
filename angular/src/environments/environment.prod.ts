@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  apiURL: '/api/',
+  ERROR_LEVEL: 1,
+  securityApiURL: 'http://localhost:4321/',
+  apiURL: 'http://localhost:4321/api/',
 };
-
