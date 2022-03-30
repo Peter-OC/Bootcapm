@@ -1,41 +1,34 @@
-<div class="Calculadora">
-  <output class="Resumen">
-    <ng-container *ngIf="SeparadorDecimal === ','; then ResumenComa; else ResumenPunto;"></ng-container>
-  </output>
-  <output class="Pantalla">
-    <ng-container *ngIf="SeparadorDecimal === ','; then PantallaComa; else PantallaPunto;"></ng-container>
-  </output>
-  <input class="btnOperar" type="button" value="C" (click)="inicia()">
-  <input class="btnOperar col-2x2" type="button" value="&curvearrowleft; BORRAR" (click)="borrar()">
-  <input class="btnOperar" type="button" value="+" (click)="calcula('+')">
-  <input class="btnDigito" type="button" value="7" (click)="ponDigito('7');">
-  <input class="btnDigito" type="button" value="8" (click)="ponDigito('8');">
-  <input class="btnDigito" type="button" value="9" (click)="ponDigito('9');">
-  <input class="btnOperar" type="button" value="-" (click)="calcula('-')">
-  <input class="btnDigito" type="button" value="4" (click)="ponDigito('4');">
-  <input class="btnDigito" type="button" value="5" (click)="ponDigito('5');">
-  <input class="btnDigito" type="button" value="6" (click)="ponDigito('6');">
-  <input class="btnOperar" type="button" value="*" (click)="calcula('*')">
-  <input class="btnDigito" type="button" value="1" (click)="ponDigito('1');">
-  <input class="btnDigito" type="button" value="2" (click)="ponDigito('2');">
-  <input class="btnDigito" type="button" value="3" (click)="ponDigito('3');">
-  <input class="btnOperar" type="button" value="/" (click)="calcula('/')">
-  <input class="btnDigito" type="button" value="±" (click)="cambiaSigno()">
-  <input class="btnDigito" type="button" value="0" (click)="ponDigito('0');">
-  <input class="btnDigito" type="button" value="{{SeparadorDecimal}}" (click)="ponComa()">
-  <input class="btnOperar" type="button" value="=" (click)="calcula('=');">
-  <!-- <input class="btnDigito" type="button" value="π" (click)="ponOperando(Math.PI);">
-  <input class="btnOperar" type="button" value="x" (click)="calcula('x');"> -->
-</div>
-<ng-template #ResumenComa>
-  {{Resumen | slice:-30 | toComaDecimal}}
-</ng-template>
-<ng-template #ResumenPunto>
-  {{Resumen | slice:-30}}
-</ng-template>
-<ng-template #PantallaComa>
-  {{Pantalla | toComaDecimal}}
-</ng-template>
-<ng-template #PantallaPunto>
-  {{Pantalla}}
-</ng-template>
+<body>
+  <div class="container">
+      <div class="calculator">
+          <div class=" display">
+              <div class="previous-value">{{displayPreviousValue}}</div>
+              <div class="current-value">{{displayCurrentValue}}</div>
+          </div>
+          <button class="col-2 col-sm-11 C" (click)="deleteAll()">C</button>
+          <button class="del" (click)="deleteOne()">
+              <img src="/assets/images/del.svg"
+                   alt="DEL"
+                   height="25"
+                   width="35" />
+          </button>
+          <button class="operador" (click)="mostrarOperador('/')">/</button>
+          <button class="numero" (click)="addNumero('7')">7</button>
+          <button class="numero" (click)="addNumero('8')">8</button>
+          <button class="numero" (click)="addNumero('9')">9</button>
+          <button class="operador" (click)="mostrarOperador('*')">*</button>
+          <button class="numero" (click)="addNumero('4')">4</button>
+          <button class="numero" (click)="addNumero('5')">5</button>
+          <button class="numero" (click)="addNumero('6')">6</button>
+          <button class="operador" (click)="mostrarOperador('-')">-</button>
+          <button class="numero" (click)="addNumero('1')">1</button>
+          <button class="numero" (click)="addNumero('2')">2</button>
+          <button class="numero" (click)="addNumero('3')">3</button>
+          <button class="operador" (click)="mostrarOperador('+')">+</button>
+          <button class="col-2 col-sm-11 numero" (click)="addNumero('0')">0</button>
+          <button class="numero" (click)="addNumero('.')">.</button>
+          <button class="operador" (click)="mostrarOperador('=')">=</button>
+      </div>
+  </div>
+
+</body>

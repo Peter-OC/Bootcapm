@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculadoraComponent } from '../calculadora/calculadora.component';
-import { HomeComponent } from '../main';
+import { ContactosComponent } from '../contactos/componente.component';
 import { DemosComponent } from '../demos/demos.component';
 import { FormularioComponent } from '../formulario/formulario.component';
-import { ContactosComponent } from '../contactos';
 import { LibrosComponent } from '../libros';
+import { HomeComponent } from '../main/home/home.component';
 
 @Component({
   selector: 'app-dinamico',
@@ -13,13 +13,12 @@ import { LibrosComponent } from '../libros';
 })
 export class DinamicoComponent implements OnInit {
   menu = [
-    { texto: 'contactos', icono: 'fa-solid fa-address-book', componente: ContactosComponent },
+    { texto: 'INICIO', icono: 'fa-solid fa-house', componente: HomeComponent},
+    { texto: 'Calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
+    { texto: 'Demos', icono: 'fa-solid fa-laptop-code', componente: DemosComponent},
     { texto: 'libros', icono: 'fa-solid fa-book', componente: LibrosComponent },
-    { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
-    { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
-    { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent },
-    { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent},
-    // { texto: 'upload', icono: 'fa-solid fa-file-arrow-up', componente: UploadComponent},
+    { texto: 'Formulario', icono: 'fa-solid fa-table-list', componente: FormularioComponent},
+    { texto: 'Contactos', icono: 'fa-solid fa-address-book', componente: ContactosComponent},
   ]
   actual = this.menu[0].componente
 

@@ -5,7 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of, throwError } from 'rxjs';
 import { LoggerService } from 'src/lib/my-core';
 import { RESTDAOService } from '../base-code/RESTDAOService';
-import { NavigationService, NotificationService } from '../common-services';
+import { NotificationService } from '../common-services';
+import { NavigationService } from '../common-services/navigation.service';
 
 import { LibrosDAOService, LibrosViewModelService } from './servicios.service';
 

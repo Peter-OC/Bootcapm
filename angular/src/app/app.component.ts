@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LoggerService } from 'src/lib/my-core';
-import { NavigationService } from './common-services';
+import { NotificationService } from './common-services';
+import { NavigationService } from './common-services/navigation.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,7 @@ import { NavigationService } from './common-services';
 })
 export class AppComponent {
 
-    constructor(nav: NavigationService) {}
+  constructor(nav: NavigationService) {}
 
   // constructor(private out: LoggerService) {
   //   out.error('Es un error')

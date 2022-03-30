@@ -6,10 +6,12 @@ import { NotificationService } from 'src/app/common-services';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent {
+export class NotificationComponent implements OnInit {
 
   constructor(private vm: NotificationService) { }
-
   public get VM() { return this.vm; }
+
+  ngOnInit(): void {
+  }
 
 }

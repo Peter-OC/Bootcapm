@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { LoggerService } from 'src/lib/my-core';
 import { RESTDAOService } from '../base-code/RESTDAOService';
 import { ModoCRUD } from '../base-code/tipos';
-import { NavigationService, NotificationService } from '../common-services';
+import { NotificationService } from '../common-services';
+import { NavigationService } from '../common-services/navigation.service';
 import { AuthService, AUTH_REQUIRED } from '../security';
 
 @Injectable({
